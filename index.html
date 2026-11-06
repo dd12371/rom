@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARCHIVVM NOMINVM · Tabularium Gentium Romanarum</title>
+  <title>ARCHIVVM NOMINVM · Tabularium Gentium Romanarum (Editio Critica)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --farbe-hintergrund-tief: #0a0b0d;
-      --farbe-hintergrund-stein: #131519;
-      --farbe-karte: #1a1c22;
-      --farbe-trennlinie: #2d3039;
+      --farbe-hintergrund-tief: #07080a;
+      --farbe-hintergrund-stein: #101217;
+      --farbe-karte: #161820;
+      --farbe-karte-hover: #1c202a;
+      --farbe-trennlinie: #2a2e3a;
       --farbe-gold-haupt: #d4af37;
       --farbe-gold-hell: #fae8a8;
       --farbe-gold-dunkel: #7a6324;
+      --farbe-purpur: #721c2e;
+      --farbe-purpur-hell: #96283f;
 
       /* Gesellschaftlicher Stand - Farbleitsystem */
       --stand-patrizier-hg: rgba(139, 38, 62, 0.28);
@@ -32,12 +35,12 @@
       --stand-plebejer-linie: #a35324;
       --stand-plebejer-text: #f5b793;
 
-      --stand-freigelassener-hg: rgba(90, 80, 115, 0.28);
-      --stand-freigelassener-linie: #685b85;
-      --stand-freigelassener-text: #c8bee0;
+      --stand-freigelassener-hg: rgba(90, 80, 115, 0.32);
+      --stand-freigelassener-linie: #796b99;
+      --stand-freigelassener-text: #d4cbef;
 
-      --stand-provinzial-hg: rgba(56, 102, 85, 0.28);
-      --stand-provinzial-linie: #386655;
+      --stand-provinzial-hg: rgba(45, 95, 78, 0.28);
+      --stand-provinzial-linie: #2d5f4e;
       --stand-provinzial-text: #9ed6c1;
 
       /* Tribus - Farbleitsystem */
@@ -50,18 +53,18 @@
       --tribus-urbana-text: #e2ba9f;
 
       --text-marmor: #f7f3eb;
-      --text-gedaempft: #9b9588;
-      --meissel-schatten: 0 1px 0 rgba(255,255,255,0.1), 0 -1px 0 rgba(0,0,0,0.95);
+      --text-gedaempft: #a29d91;
+      --meissel-schatten: 0 1px 0 rgba(255,255,255,0.12), 0 -1px 0 rgba(0,0,0,0.95);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: radial-gradient(circle at 50% 8%, #1c1e24 0%, #08080a 100%);
+      background: radial-gradient(circle at 50% 5%, #181b22 0%, #060709 100%);
       color: var(--text-marmor);
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
-      padding: 2rem 1.25rem 4rem;
+      padding: 1.8rem 1.25rem 4rem;
       line-height: 1.5;
     }
 
@@ -70,47 +73,48 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #8b263e, #d4af37, #c5862b, #2e7557, #8b263e);
+      background: linear-gradient(90deg, #721c2e, #d4af37, #c5862b, #2e7557, #721c2e);
       z-index: 1000;
     }
 
     .haupt-rahmen {
-      max-width: 1480px;
+      max-width: 1520px;
       margin: 0 auto;
     }
 
     /* HEADER */
     header {
       text-align: center;
-      padding: 1.5rem 1rem 2.5rem;
+      padding: 1rem 1rem 2.2rem;
       border-bottom: 1px solid var(--farbe-gold-dunkel);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.2rem;
+      position: relative;
     }
 
     .spqr-banderole {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.45em;
       color: var(--farbe-gold-haupt);
       text-transform: uppercase;
       margin-bottom: 0.6rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.9rem;
     }
 
     .spqr-banderole::before, .spqr-banderole::after {
       content: "❖";
-      color: var(--stand-patrizier-linie);
+      color: var(--farbe-purpur-hell);
     }
 
     h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-size: clamp(2rem, 4.6vw, 3.5rem);
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       color: #fff;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 0 35px rgba(212,175,55,0.25);
+      text-shadow: 0 4px 25px rgba(0,0,0,0.9), 0 0 40px rgba(212,175,55,0.22);
     }
 
     .untertitel {
@@ -121,15 +125,28 @@
       margin-top: 0.4rem;
     }
 
+    .header-badge {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.8rem;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid var(--farbe-gold-dunkel);
+      border-radius: 2px;
+      color: var(--farbe-gold-hell);
+    }
+
     /* HAUPTLAYOUT */
     .register-anordnung {
       display: grid;
-      grid-template-columns: 410px 1fr;
+      grid-template-columns: 420px 1fr;
       gap: 2.2rem;
       align-items: start;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1140px) {
       .register-anordnung { grid-template-columns: 1fr; }
     }
 
@@ -137,7 +154,7 @@
     .steuerpult {
       background: var(--farbe-hintergrund-stein);
       border: 1px solid var(--farbe-gold-dunkel);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.5);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.75), inset 0 0 60px rgba(0,0,0,0.55);
       border-radius: 4px;
       padding: 1.8rem;
       position: sticky;
@@ -182,10 +199,10 @@
 
     select, input[type="text"], input[type="number"] {
       width: 100%;
-      background: #0b0c0f;
-      border: 1px solid #323640;
+      background: #090a0d;
+      border: 1px solid #30343f;
       color: var(--text-marmor);
-      padding: 0.65rem 0.85rem;
+      padding: 0.68rem 0.85rem;
       font-size: 0.88rem;
       border-radius: 3px;
       font-family: inherit;
@@ -195,7 +212,7 @@
     select:focus, input:focus {
       outline: none;
       border-color: var(--farbe-gold-haupt);
-      box-shadow: 0 0 10px rgba(212,175,55,0.25);
+      box-shadow: 0 0 12px rgba(212,175,55,0.3);
     }
 
     .auswahl-schalter-zwei {
@@ -216,13 +233,13 @@
     .schalter-feld label {
       display: block;
       text-align: center;
-      padding: 0.6rem;
-      background: #0d0e12;
-      border: 1px solid #323640;
+      padding: 0.65rem;
+      background: #090a0d;
+      border: 1px solid #30343f;
       border-radius: 3px;
       cursor: pointer;
       color: var(--text-gedaempft);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       margin: 0;
       transition: all 0.2s;
     }
@@ -232,11 +249,12 @@
       border-color: var(--farbe-gold-haupt);
       color: #fff;
       font-weight: 700;
+      box-shadow: inset 0 0 12px rgba(139,38,62,0.4);
     }
 
     .haupt-befehl-taste {
       width: 100%;
-      background: linear-gradient(180deg, #8b263e 0%, #4a1320 100%);
+      background: linear-gradient(180deg, #7c1f35 0%, #46121d 100%);
       color: #fff;
       font-family: 'Cinzel', serif;
       font-weight: 700;
@@ -247,13 +265,13 @@
       border: 1px solid var(--farbe-gold-haupt);
       border-radius: 3px;
       cursor: pointer;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.6);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
       margin-top: 1rem;
       transition: all 0.2s;
     }
 
     .haupt-befehl-taste:hover {
-      background: linear-gradient(180deg, #a82e4a 0%, #5d1728 100%);
+      background: linear-gradient(180deg, #9b2844 0%, #581625 100%);
       border-color: #fff;
       transform: translateY(-1px);
     }
@@ -266,33 +284,33 @@
     }
 
     .neben-taste {
-      background: #101216;
-      border: 1px solid #2e323b;
+      background: #0e1014;
+      border: 1px solid #2d313a;
       color: var(--text-gedaempft);
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      padding: 0.5rem;
+      padding: 0.55rem;
       border-radius: 2px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .neben-taste:hover {
-      background: #1c1f26;
+      background: #171a22;
       color: var(--text-marmor);
       border-color: var(--farbe-gold-dunkel);
     }
 
     .lexikon-oeffnen-taste {
       width: 100%;
-      background: #151a24;
+      background: #131722;
       border: 1px dashed var(--farbe-gold-dunkel);
       color: var(--farbe-gold-hell);
       font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       letter-spacing: 0.1em;
-      padding: 0.75rem;
+      padding: 0.8rem;
       margin-top: 1.25rem;
       border-radius: 3px;
       cursor: pointer;
@@ -300,11 +318,11 @@
     }
 
     .lexikon-oeffnen-taste:hover {
-      background: #1e2533;
+      background: #1c2233;
       border-color: var(--farbe-gold-haupt);
     }
 
-    /* ERGEBNISFLÄCHE */
+    /* AUSGABEBEREICH */
     .ausgabe-bereich {
       display: flex;
       flex-direction: column;
@@ -335,9 +353,9 @@
 
     .datei-export-taste {
       background: transparent;
-      border: 1px solid #444038;
+      border: 1px solid #48443b;
       color: var(--farbe-gold-hell);
-      padding: 0.35rem 0.75rem;
+      padding: 0.4rem 0.8rem;
       font-size: 0.72rem;
       font-family: 'Cinzel', serif;
       cursor: pointer;
@@ -352,28 +370,29 @@
 
     /* MONUMENT / EINZELDOSSIER */
     .titulus-monument {
-      background: linear-gradient(135deg, #202228 0%, #101115 100%);
+      background: linear-gradient(135deg, #1d1f26 0%, #0d0e12 100%);
       border: 2px solid var(--farbe-gold-dunkel);
-      box-shadow: 0 15px 45px rgba(0,0,0,0.8), inset 0 0 100px rgba(0,0,0,0.6);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.85), inset 0 0 100px rgba(0,0,0,0.65);
       border-radius: 4px;
-      padding: 2.5rem 2rem;
+      padding: 2.8rem 2.2rem 2.4rem;
       position: relative;
     }
 
     .titulus-monument::before {
-      content: "DECRETO CENSORIO · CIVITAS ROMANA";
+      content: "DECRETO CENSORIO · CIVITAS ROMANA LEGE CONFIRMATA";
       position: absolute;
       top: -11px;
       left: 50%;
       transform: translateX(-50%);
-      background: #4a1320;
+      background: #46121d;
       color: var(--farbe-gold-hell);
       font-family: 'Cinzel', serif;
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.3em;
-      padding: 0.2rem 1.4rem;
+      padding: 0.22rem 1.6rem;
       border: 1px solid var(--farbe-gold-haupt);
+      white-space: nowrap;
     }
 
     .titulus-kopf {
@@ -383,9 +402,9 @@
 
     .titulus-inschrift {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+      font-size: clamp(1.4rem, 3.4vw, 2.5rem);
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       color: #fff;
       text-shadow: var(--meissel-schatten);
       margin-bottom: 0.5rem;
@@ -394,7 +413,7 @@
 
     .titulus-phonetik {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--farbe-gold-hell);
       font-style: italic;
     }
@@ -404,7 +423,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.6rem;
-      margin-top: 1rem;
+      margin-top: 1.1rem;
     }
 
     .status-abzeichen {
@@ -425,21 +444,21 @@
 
     .abzeichen-rustica { background: var(--tribus-rustica-hg); border: 1px solid var(--tribus-rustica-linie); color: var(--tribus-rustica-text); }
     .abzeichen-urbana { background: var(--tribus-urbana-hg); border: 1px solid var(--tribus-urbana-linie); color: var(--tribus-urbana-text); }
-    .abzeichen-epoche { background: rgba(255,255,255,0.06); border: 1px solid #4a4e59; color: #d0d3dc; }
+    .abzeichen-epoche { background: rgba(255,255,255,0.06); border: 1px solid #444855; color: #d0d3dc; }
 
-    /* ANATOMIE-KASTEN (STANDARDIISIERT DREISTUFIG) */
+    /* ANATOMIE-KASTEN (3-STUFIG) */
     .anatomie-kasten-gitter {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 0.9rem;
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 1rem;
       margin-top: 2rem;
     }
 
     .anatomie-kasten {
-      background: rgba(9, 10, 13, 0.8);
+      background: rgba(8, 9, 12, 0.85);
       border: 1px solid var(--farbe-trennlinie);
       border-radius: 3px;
-      padding: 0.9rem 1rem;
+      padding: 1rem 1.1rem;
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
@@ -448,7 +467,7 @@
 
     .anatomie-kasten:hover {
       border-color: var(--farbe-gold-dunkel);
-      background: rgba(15, 17, 22, 0.95);
+      background: rgba(14, 16, 21, 0.95);
     }
 
     .kasten-patrizier { border-left: 3px solid var(--stand-patrizier-linie); }
@@ -480,15 +499,15 @@
     .kasten-stufe-erklaerung {
       font-size: 0.78rem;
       color: var(--text-gedaempft);
-      line-height: 1.4;
+      line-height: 1.45;
       margin-top: auto;
     }
 
     .kasten-stufe-erklaerung strong {
-      color: #dfdbd1;
+      color: #e0dcd1;
     }
 
-    /* ZENSUS-ROLLE (MEHRFACH-GENERIERUNG) */
+    /* ZENSUS-ROLLE */
     .zensus-rolle {
       display: flex;
       flex-direction: column;
@@ -500,7 +519,7 @@
       border: 1px solid var(--farbe-trennlinie);
       border-left: 4px solid var(--farbe-gold-haupt);
       border-radius: 3px;
-      padding: 1.25rem 1.4rem;
+      padding: 1.3rem 1.5rem;
       transition: all 0.2s;
     }
 
@@ -527,19 +546,19 @@
 
     .rolle-name-sub {
       font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--farbe-gold-haupt);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       margin-top: 0.2rem;
     }
 
     .rolle-detail-gitter {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.75rem;
+      gap: 0.8rem;
       margin-top: 0.9rem;
-      padding-top: 0.8rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
       font-size: 0.8rem;
     }
 
@@ -556,8 +575,8 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
       z-index: 2000;
       align-items: center;
       justify-content: center;
@@ -569,29 +588,30 @@
     }
 
     .modal-fenster {
-      background: #13151b;
+      background: #111319;
       border: 1px solid var(--farbe-gold-haupt);
       border-radius: 4px;
       width: 100%;
-      max-width: 1200px;
-      max-height: 90vh;
+      max-width: 1280px;
+      max-height: 92vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.95);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.98);
+      overflow-y: auto;
     }
 
     .modal-kopf {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 1.6rem;
+      padding: 1.25rem 1.8rem;
       border-bottom: 1px solid var(--farbe-trennlinie);
-      background: #0f1115;
+      background: #0d0f14;
     }
 
     .modal-kopf h2 {
       font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       letter-spacing: 0.12em;
       color: var(--farbe-gold-hell);
     }
@@ -600,7 +620,7 @@
       background: transparent;
       border: none;
       color: var(--text-gedaempft);
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       cursor: pointer;
       line-height: 1;
     }
@@ -610,10 +630,10 @@
     .modal-reiter-leiste {
       display: flex;
       gap: 0.5rem;
-      padding: 0.8rem 1.6rem;
-      background: #0c0d11;
+      padding: 0.8rem 1.8rem;
+      background: #0a0b0f;
       border-bottom: 1px solid var(--farbe-trennlinie);
-      overflow-x: auto;
+      flex-wrap: wrap;
     }
 
     .modal-reiter {
@@ -623,7 +643,7 @@
       font-family: 'Cinzel', serif;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
-      padding: 0.45rem 0.85rem;
+      padding: 0.5rem 0.9rem;
       cursor: pointer;
       border-radius: 2px;
       white-space: nowrap;
@@ -637,18 +657,20 @@
     }
 
     .modal-suchleiste {
-      padding: 0.8rem 1.6rem;
-      background: #0f1115;
+      padding: 0.9rem 1.8rem;
+      background: #0d0f14;
       border-bottom: 1px solid var(--farbe-trennlinie);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
     }
 
     .modal-inhalt-bereich {
-      padding: 1.6rem;
-      overflow-y: auto;
-      flex: 1;
+      padding: 1.8rem;
     }
 
-    /* LEXIKON-TABELLEN (STILREIN & HOCHAUFLÖSEND) */
+    /* LEXIKON-TABELLEN */
     .lexikon-tabelle {
       width: 100%;
       border-collapse: separate;
@@ -664,15 +686,15 @@
       color: var(--farbe-gold-haupt);
       padding: 0.85rem 1rem;
       border-bottom: 2px solid var(--farbe-gold-dunkel);
-      background: #111317;
+      background: #0f1116;
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
     .lexikon-tabelle td {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid #252833;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #232630;
       color: #d1ccbe;
       vertical-align: top;
       line-height: 1.45;
@@ -680,6 +702,32 @@
 
     .lexikon-tabelle tbody tr:hover td {
       background: rgba(255,255,255,0.04);
+    }
+
+    /* TOAST BENACHRICHTIGUNG */
+    .kopier-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #46121d;
+      border: 1px solid var(--farbe-gold-haupt);
+      color: var(--farbe-gold-hell);
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 1.5rem;
+      border-radius: 3px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 3000;
+      pointer-events: none;
+    }
+
+    .kopier-toast.aktiv {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -690,6 +738,7 @@
     <div class="spqr-banderole">Tabularium Gentium Romanarum</div>
     <h1>ARCHIVVM · NOMINVM</h1>
     <div class="untertitel">Wissenschaftlich-authentischer Generator des antiken römischen Bürgerrechts & der Tria Nomina</div>
+    <div class="header-badge">Editio Critica · Vollständiger Kanon der 35 Tribus & Bereinigte Gentes</div>
   </header>
 
   <div class="register-anordnung">
@@ -704,28 +753,28 @@
       <!-- Epoche -->
       <div class="eingabe-gruppe">
         <label for="cfgEpoche">
-          Aetas Historica · Historische Epoche
+          Aetas Historica · Epoche
           <span class="label-untertitel">Rechtsepoche</span>
         </label>
         <select id="cfgEpoche">
           <option value="late_rep" selected>Aetas Libera · Späte Republik (Klassische Tria Nomina)</option>
           <option value="early_rep">Aetas Antiqua · Frühe Republik (Archaisches Bürgerrecht)</option>
           <option value="principate">Aetas Principatus · Hohe Kaiserzeit (Polyonymie & Adoptionen)</option>
-          <option value="late_antiquity">Aetas Posterior · Spätantike (Signa & Amtspräfixe)</option>
+          <option value="late_antiquity">Aetas Posterior · Spätantike (Flavische Amtspräfixe & Signa)</option>
         </select>
       </div>
 
-      <!-- Gesellschaftlicher Stand -->
+      <!-- Stand -->
       <div class="eingabe-gruppe">
         <label for="cfgStand">
-          Status Civitatis · Gesellschaftlicher Stand
+          Status Civitatis · Stand
           <span class="label-untertitel">Ordo</span>
         </label>
         <select id="cfgStand">
-          <option value="patrician" selected>Patricius · Patrizier (Senatorenadel der Urgentes)</option>
-          <option value="equester">Equester · Ritterstand (Wirtschafts- & Amtsadel)</option>
+          <option value="patrician" selected>Patricius · Patrizier (Uradel der Gentes Maiores & Minores)</option>
+          <option value="equester">Equester · Ritterstand (Amts- & Finanzaristokratie)</option>
           <option value="plebeian">Plebeius · Plebejer (Freies Staatsvolk)</option>
-          <option value="libertus">Libertus · Freigelassener (Ehemaliger Sklave)</option>
+          <option value="libertus">Libertus · Freigelassener (Bürger mit Patronsbindung)</option>
           <option value="provincialis">Provincialis · Provinzialbürger (Reichsrecht)</option>
         </select>
       </div>
@@ -745,7 +794,7 @@
         </div>
       </div>
 
-      <!-- Zensus-Menge bis 100 -->
+      <!-- Zensus-Menge -->
       <div class="eingabe-gruppe">
         <label for="cfgAnzahl">
           Numerus Civium · Zensus-Menge (1 bis 100)
@@ -757,24 +806,24 @@
       <!-- Agnomen-Modus -->
       <div class="eingabe-gruppe">
         <label for="cfgAgnomenModus">
-          Decretum Agnominis · Verleihung von Ehrennamen
+          Decretum Agnominis · Ehrennamen
           <span class="label-untertitel">Regelwerk</span>
         </label>
         <select id="cfgAgnomenModus">
-          <option value="zufall" selected>Sors Arbitraria · Zufällige Verleihung (selten, nur Männer)</option>
-          <option value="immer">Semper Decretum · Immer mit Agnomen (nur Männer)</option>
-          <option value="nie">Numquam · Nur Standardversion (ohne Agnomen)</option>
+          <option value="zufall" selected>Sors Arbitraria · Seltene Senatsverleihung</option>
+          <option value="immer">Semper Decretum · Immer mit Agnomen (Männer / Kaiserinnen)</option>
+          <option value="nie">Numquam · Ohne Agnomen</option>
         </select>
       </div>
 
-      <!-- Epigraphik Modus (Live-Umschaltung) -->
+      <!-- Epigraphik Modus -->
       <div class="eingabe-gruppe">
         <label for="cfgSchrift">
-          Scriptura · Epigraphik und Schriftart
-          <span class="label-untertitel">Sofortige Umwandlung</span>
+          Scriptura · Epigraphik
+          <span class="label-untertitel">Echte Stein-Interpunktion</span>
         </label>
         <select id="cfgSchrift">
-          <option value="monumental" selected>Capitalis Monumentalis (V statt U, Interpunkt ·)</option>
+          <option value="monumental" selected>Capitalis Monumentalis (V/I, Interpunkt ·)</option>
           <option value="classical">Klassisches Buchlatein (Lesbare U/V & J/I)</option>
         </select>
       </div>
@@ -791,29 +840,29 @@
 
       <!-- Historische Vorlagen -->
       <div class="eingabe-gruppe" style="padding-top:0.75rem; border-top:1px dashed var(--farbe-trennlinie);">
-        <label for="cfgMusterPerson">Exempla Historica · Historische Musterpersönlichkeiten</label>
+        <label for="cfgMusterPerson">Exempla Historica · Musterpersönlichkeiten</label>
         <select id="cfgMusterPerson">
           <option value="">— Historische Vorlage laden —</option>
           <option value="caesar">C. Iulius Caesar (Diktator & Feldherr)</option>
-          <option value="cicero">M. Tullius Cicero (Konsul, Redner, Ritteradel)</option>
+          <option value="cicero">M. Tullius Cicero (Konsul & Redner)</option>
           <option value="scipio">P. Cornelius Scipio Africanus (Hannibal-Bezwinger)</option>
           <option value="augustus">Imp. Caesar Divi f. Augustus (Erster Princeps)</option>
-          <option value="sulla">L. Cornelius Sulla Felix (Patrizischer Diktator)</option>
+          <option value="sulla">L. Cornelius Sulla Felix (Diktator)</option>
           <option value="cato_maior">M. Porcius Cato Censorius (Tugendwächter)</option>
           <option value="cornelia">Cornelia Africana (Mutter der Gracchen)</option>
-          <option value="livia">Livia Drusilla Augusta (Kaiserin Roms)</option>
+          <option value="livia">Livia Drusilla Augusta (Kaiserin)</option>
           <option value="tiro">M. Tullius Tiro (Gelehrter Freigelassener)</option>
         </select>
       </div>
 
-      <button class="haupt-befehl-taste" id="btnGenerieren">⚡ Decretum Facere · Namen Dekretieren</button>
+      <button class="haupt-befehl-taste" id="btnGenerieren">⚡ Decretum Facere · Dekretieren</button>
 
       <div class="steuer-nebentasten">
-        <button class="neben-taste" id="btnRuecksetzen">Tabula Rasa · Leeren</button>
-        <button class="neben-taste" id="btnZufall">Sors · Zufallswahl</button>
+        <button class="neben-taste" id="btnRuecksetzen">Tabula Rasa</button>
+        <button class="neben-taste" id="btnZufall">Sors · Zufall</button>
       </div>
 
-      <button class="lexikon-oeffnen-taste" id="btnLexikonOeffnen">📖 Lexicon Onomasticum · Namensverzeichnis öffnen</button>
+      <button class="lexikon-oeffnen-taste" id="btnLexikonOeffnen">📖 Lexicon Onomasticum · Namensarchiv</button>
     </aside>
 
     <!-- AUSGABEBEREICH -->
@@ -821,8 +870,9 @@
       <div class="ausgabe-kopfleiste">
         <div class="zensus-status-text" id="statusZensus">Zensus: Bereit zur Beurkundung</div>
         <div class="export-schaltflaechen">
+          <button class="datei-export-taste" id="btnKopierenInschrift">Inscriptio Exscribere · Kopieren</button>
           <button class="datei-export-taste" id="btnExportJSON">JSON Archiv</button>
-          <button class="datei-export-taste" id="btnExportCSV">CSV Zensusrolle</button>
+          <button class="datei-export-taste" id="btnExportCSV">CSV Rolle</button>
         </div>
       </div>
 
@@ -838,62 +888,72 @@
 <div class="modal-hintergrund" id="lexikonModal">
   <div class="modal-fenster">
     <div class="modal-kopf">
-      <h2>LEXICON ONOMASTICVM ROMANVM · VOLLSTÄNDIGER KATALOG</h2>
+      <h2>LEXICON ONOMASTICVM ROMANVM · EDITIO CRITICA</h2>
       <button class="taste-schliessen" id="btnLexikonSchliessen">&times;</button>
     </div>
     <div class="modal-reiter-leiste">
-      <button class="modal-reiter aktiv" data-katalog="gentes">Gentes · Familien & Stände</button>
-      <button class="modal-reiter" data-katalog="cognomina">Cognomina · Beinamen & Zweige</button>
-      <button class="modal-reiter" data-katalog="agnomina">Agnomina · Ehren- & Siegestitel (60)</button>
-      <button class="modal-reiter" data-katalog="praenomina">Praenomina · Die 18 Ur-Vornamen</button>
-      <button class="modal-reiter" data-katalog="tribus">Tribus · Die 35 Stimmbezirke</button>
+      <button class="modal-reiter aktiv" data-katalog="gentes">Gentes · Familien (<span id="zaehlerGentes">0</span>)</button>
+      <button class="modal-reiter" data-katalog="cognomina">Cognomina · Beinamen (<span id="zaehlerCognomina">0</span>)</button>
+      <button class="modal-reiter" data-katalog="agnomina">Agnomina · Ehren- & Siegestitel (<span id="zaehlerAgnomina">0</span>)</button>
+      <button class="modal-reiter" data-katalog="praenomina">Praenomina · Vornamen (<span id="zaehlerPraenomina">0</span>)</button>
+      <button class="modal-reiter" data-katalog="tribus">Tribus · Die 35 Bezirke (<span id="zaehlerTribus">0</span>)</button>
     </div>
     <div class="modal-suchleiste">
       <input type="text" id="lexikonSuchFeld" placeholder="Filter nach Name, Übersetzung, Stand oder Epoche...">
+      <div style="font-size:0.75rem; color:var(--text-gedaempft);" id="trefferZaehler">Treffer: 0</div>
     </div>
     <div class="modal-inhalt-bereich" id="lexikonTabellenAnzeige">
-      <!-- Tabelle -->
+      <!-- Tabelle dynamisch -->
     </div>
   </div>
 </div>
+
+<div class="kopier-toast" id="kopierToast">Inscriptio in Tabulam Descripta Est! (Kopiert)</div>
 
 <script>
 (function() {
   'use strict';
 
   // =========================================================================
-  // 1. VOLLSTÄNDIGE HISTORISCHE DATENBANKEN (ALPHABETISCH SORTIERT)
+  // 1. VOLLSTÄNDIGE HISTORISCHE DATENBANKEN
   // =========================================================================
 
+  // PRAENOMINA
   const PRAENOMINA_DB = [
-    { name: "Appius", abbr: "Ap.", fem: "Appia", meaning: "Sabinisches Ur-Praenomen, Markenzeichen der Gens Claudia" },
+    { name: "Appius", abbr: "Ap.", fem: "Appia", meaning: "Sabinisches Ur-Praenomen, Markenzeichen der patrizischen Claudier" },
     { name: "Aulus", abbr: "A.", fem: "Aula", meaning: "Der Geheiligte, Hofbürger oder Palastbewohner" },
     { name: "Decimus", abbr: "D.", fem: "Decima", meaning: "Der Zehntgeborene des Hauses" },
-    { name: "Gaius", abbr: "C.", fem: "Gaia", meaning: "Der Erfreute / Frohe (archaich stets als C. geschrieben)" },
-    { name: "Gnaeus", abbr: "Cn.", fem: "Gnaea", meaning: "Der Gezeichnete / Träger eines Geburtsmales" },
-    { name: "Kaeso", abbr: "K.", fem: "Caesula", meaning: "Der Blauäugige oder durch Schnitt Geborene" },
-    { name: "Lucius", abbr: "L.", fem: "Lucia", meaning: "Der bei Tagesanbruch / im ersten Morgenlicht Geborene" },
-    { name: "Mamercus", abbr: "Mam.", fem: "Mamerca", meaning: "Oskisch-sabinisches Mars-Patrozinium der Aemilier" },
+    { name: "Faustus", abbr: "Fav.", fem: "Fausta", meaning: "Der Glückliche / Begünstigte (ehemals Cornelier-Vorname)" },
+    { name: "Gaius", abbr: "C.", fem: "Gaia", meaning: "Der Erfreute / Frohe (archaich stets C. geschrieben)" },
+    { name: "Gnaeus", abbr: "Cn.", fem: "Gnaea", meaning: "Der mit dem Geburtsmal Gezeichnete" },
+    { name: "Hostus", abbr: "H.", fem: "Hosta", meaning: "Der Wehrhafte / Fremdenbezwinger der Frühzeit" },
+    { name: "Kaeso", abbr: "K.", fem: "Caesula", meaning: "Der Blauäugige oder durch Schnitt Geborene (Fabier)" },
+    { name: "Lucius", abbr: "L.", fem: "Lucia", meaning: "Der bei Tagesanbruch im ersten Morgenlicht Geborene" },
+    { name: "Mamercus", abbr: "Mam.", fem: "Mamerca", meaning: "Oskisch-sabinisches Mars-Patrozinium (Aemilier)" },
     { name: "Manius", abbr: "M'.", fem: "Mania", meaning: "Der zur guten Morgenfrühe Geborene" },
     { name: "Marcus", abbr: "M.", fem: "Marcia", meaning: "Dem altrömischen Kriegsgott Mars geweiht" },
-    { name: "Numerius", abbr: "N.", fem: "Numeria", meaning: "Der Rasche, Schnelle oder Zahlreiche" },
+    { name: "Numerius", abbr: "N.", fem: "Numeria", meaning: "Der Rasche, Zahlreiche (urspr. fabisch)" },
+    { name: "Postumus", abbr: "Post.", fem: "Postuma", meaning: "Der nach dem Tode des Vaters Geborene" },
     { name: "Publius", abbr: "P.", fem: "Publia", meaning: "Der dem Volk Verbundene / Volksfreund (publicus)" },
     { name: "Quintus", abbr: "Q.", fem: "Quinta", meaning: "Der Fünftgeborene des Hauses" },
     { name: "Servius", abbr: "Ser.", fem: "Servia", meaning: "Der Beschützte, Gerettete oder Bewahrte" },
     { name: "Sextus", abbr: "Sex.", fem: "Sexta", meaning: "Der Sechstgeborene des Hauses" },
     { name: "Spurius", abbr: "Sp.", fem: "Spuria", meaning: "Der Außerhalb-Geborene oder Stadtbürger" },
     { name: "Tiberius", abbr: "Ti.", fem: "Tiberia", meaning: "Dem heiligen Flussgott Tiber geweiht" },
-    { name: "Titus", abbr: "T.", fem: "Titia", meaning: "Der Feierliche, Ehrwürdige oder Taubenhafte" }
+    { name: "Titus", abbr: "T.", fem: "Titia", meaning: "Der Feierliche, Ehrwürdige oder Taubenhafte" },
+    { name: "Tullus", abbr: "Tul.", fem: "Tulla", meaning: "Der Hervorsprudelnde / Kämpfer (Hostilier)" },
+    { name: "Volero", abbr: "Vol.", fem: "Volerona", meaning: "Der Wollende / Tatkräftige (Publilier)" },
+    { name: "Vopiscus", abbr: "Vop.", fem: "Vopisca", meaning: "Der überlebende Zwillingsbruder (Iulier)" }
   ].sort((a,b) => a.name.localeCompare(b.name));
 
-  // Gentes mit genauer Differenzierung zwischen Patriziern, Ritterstand und Plebejern
+  // GENTES
   const GENTES_DB = [
     { nomen: "Acilius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Aviola, Balbus, Glabrio", origin: "Bedeutende Konsularfamilie, berühmt durch Glabrio." },
     { nomen: "Acutius", status: "Plebeius · Plebejer", time: "4. bis 1. Jh. v. Chr.", stirpes: "—", origin: "Altes römisches Geschlecht republikanischer Amtsträger." },
     { nomen: "Aebutius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Helva", origin: "Uralte patrizische Gründerfamilie der frühen Republik." },
     { nomen: "Aedinius", status: "Equester · Ritterstand", time: "3. Jh. n. Chr.", stirpes: "—", origin: "Kaiserzeitlicher Beamten- und Ritteradel." },
     { nomen: "Aelius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Gallus, Lamia, Paetus, Tubero", origin: "Mächtige Plebejerfamilie; Ahnen des Kaisers Hadrian." },
-    { nomen: "Aemilius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Barbula, Lepidus, Mamercus, Paullus, Scaurus", origin: "Eine der 5 großen 'Gentes Maiores' Roms; höchste Nobilität." },
+    { nomen: "Aemilius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Barbula, Lepidus, Mamercus, Paullus, Scaurus", origin: "Eine der 5 großen 'Gentes Maiores' Roms; höchste Senatsnobilität." },
     { nomen: "Afranius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Burrus", origin: "Picenischer Ursprung; stellte Konsuln und Feldherren." },
     { nomen: "Albinius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Patriotische Plebejer der frühen Konsularzeit." },
     { nomen: "Albius", status: "Equester · Ritterstand", time: "seit 2. Jh. v. Chr.", stirpes: "Tibullus", origin: "Ritteradel, Familie des berühmten Elegikers Tibull." },
@@ -928,585 +988,368 @@
     { nomen: "Aurius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Lokale ritterliche Nobilität aus Larinum." },
     { nomen: "Axius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Naso", origin: "Reicher ritterlicher Geldadel und Senatoren aus Reate." },
     { nomen: "Baebius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Tamphilus", origin: "Diplomaten und Konsuln im Zweiten Punischen Krieg." },
-    { nomen: "Blossius", status: "Equester · Ritterstand", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Kampanischer Adel; stoische Berater der Gracchen." },
+    { nomen: "Blossius", status: "Equester · Ritterstand", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Kampanischer Adel; stoische Berater der Reformer-Gracchen." },
     { nomen: "Bruttius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Praesens", origin: "Kaiserliche Schwiegerfamilie (Kaiserin Crispina)." },
-    { nomen: "Caecilius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Metellus, Niger, Rufus", origin: "Mächtigste plebejische Dynastie; dominierte den Senat." },
+    { nomen: "Caecilius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Metellus, Niger, Rufus", origin: "Mächtigste plebejische Dynastie; dominierte den Senat über Jahrhunderte." },
     { nomen: "Caecina", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Severus", origin: "Uralter etruskischer Fürstenadel aus Volaterrae." },
     { nomen: "Caedicius", status: "Plebeius · Plebejer", time: "5. bis 3. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Kriegstribunen und Volkshelden." },
     { nomen: "Caerellius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Statthalteradel im Grenzschutz des Reiches." },
     { nomen: "Caesius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Bassus", origin: "Italische Notabeln und Dichter." },
-    { nomen: "Caesonius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Beamten- und Verwaltungsadel." },
-    { nomen: "Calavius", status: "Equester · Ritterstand", time: "seit 4. Jh. v. Chr.", stirpes: "Novius", origin: "Höchster kampanischer Adel aus Capua." },
+    { nomen: "Caesonius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Beamten- und Verwaltungsadel der Kaiserzeit." },
+    { nomen: "Calavius", status: "Equester · Ritterstand", time: "seit 4. Jh. v. Chr.", stirpes: "Novius", origin: "Höchster kampanischer Hochadel aus Capua." },
     { nomen: "Calpurnius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Bestia, Bibulus, Piso", origin: "Abstammung von König Numa Pompilius; Gegenspieler Caesars." },
     { nomen: "Calvisius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Sabinus", origin: "Loyale Generäle und Konsuln des Augustus." },
     { nomen: "Calvius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Frührepublikanisches Konsulargeschlecht." },
     { nomen: "Caninius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Rebilus", origin: "Bürgerkriegsgeneräle des Gaius Caesar." },
-    { nomen: "Cannutius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Unbeugsame Volkstribunen gegen Antonius." },
-    { nomen: "Canuleius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Dives", origin: "Urheber der Lex Canuleia (Eherecht Patrizier-Plebejer)." },
-    { nomen: "Carisius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Legaten und Münzmeister im Kantabrischen Krieg." },
-    { nomen: "Carinnas", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Marianische Heermeister und Triumphatoren." },
-    { nomen: "Carvilius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Maximus", origin: "Eroberer Samniums und Stifter der 1. Grammatikschule." },
+    { nomen: "Canuleius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Dives", origin: "Urheber der Lex Canuleia (Aufhebung des Eheverbots Patrizier/Plebejer)." },
+    { nomen: "Carvilius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Maximus", origin: "Eroberer Samniums und Stifter der ersten Grammatikschule." },
     { nomen: "Cassius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Longinus, Parmensis", origin: "Strikte Republikaner; Cassius führte das Attentat auf Caesar." },
-    { nomen: "Catius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Epikureische Denker und Volksoffiziere." },
-    { nomen: "Ceionius", status: "Patricius · Patrizier", time: "seit 1. Jh. n. Chr.", stirpes: "Commodus, Rufius", origin: "Kaiserliche Adoptivsippe des Lucius Verus." },
     { nomen: "Cestius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Gallus", origin: "Erbauer der Cestius-Pyramide an der Via Ostiensis." },
-    { nomen: "Cilnius", status: "Equester · Ritterstand", time: "seit 4. Jh. v. Chr.", stirpes: "Maecenas", origin: "Etruskisches Königsgeschlecht; Schöpfer des Mäzenatentums." },
-    { nomen: "Cispius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Laevus", origin: "Namensgeber des Cispius-Hügels in Rom." },
+    { nomen: "Cilnius", status: "Equester · Ritterstand", time: "seit 4. Jh. v. Chr.", stirpes: "Maecenas", origin: "Etruskisches Königsgeschlecht aus Arretium; Förderer des Horaz & Vergil." },
     { nomen: "Claudius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Nero, Pulcher, Marcellus, Sabinus", origin: "Gens Maior; Gründer der Julisch-Claudischen Kaiserdynastie." },
     { nomen: "Clodius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Pulcher", origin: "Plebejische Abspaltung der Claudier durch Adoption (Demagoge Clodius)." },
-    { nomen: "Cloelius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Siculus", origin: "Uraltes Geschlecht aus Alba Longa zur Königszeit." },
-    { nomen: "Cluentius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Habitus", origin: "Führender Ritteradel aus Larinum (verteidigt von Cicero)." },
-    { nomen: "Cluvius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Rufus", origin: "Kampanischer Adel und kaiserzeitliche Historiker." },
+    { nomen: "Cloelius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Siculus", origin: "Uraltes Patriziergeschlecht aus Alba Longa." },
+    { nomen: "Cluentius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Habitus", origin: "Führender Ritteradel aus Larinum (von Cicero verteidigt)." },
     { nomen: "Coelius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Caldus, Rufus", origin: "Brillante Bürgerkriegsredner und Prätoren." },
-    { nomen: "Cominius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Auruncus", origin: "Besiegten die Volsker in der Frühphase der Republik." },
-    { nomen: "Considius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Longus", origin: "Senatoren und Militärkommandeure in Nordafrika." },
-    { nomen: "Coponius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Erster Statthalter von Iudaea unter Kaiser Augustus." },
-    { nomen: "Cornelius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Scipio, Sulla, Cinna, Lentulus, Dolabella", origin: "Gens Maior mit den meisten Konsuln der Republik." },
-    { nomen: "Cornificius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Statthalter Afrikas und republikanische Dichter." },
-    { nomen: "Coruncanius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Tiberius Coruncanius war erster plebejischer Pontifex Maximus." },
-    { nomen: "Cosconius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Feldherren im Illyrischen und Bundesgenossenkrieg." },
-    { nomen: "Cossutius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Ritterlicher Adel berühmter Architekten und Bauleiter." },
-    { nomen: "Curiatius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Trigeminus", origin: "Gegner der Horatier im legendären Kampf um Alba Longa." },
-    { nomen: "Curius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Dentatus", origin: "Manius Curius Dentatus: Vorbild altrömischer Tugend." },
-    { nomen: "Curtilius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Ritterlicher Geldadel der Spätrepublik." },
-    { nomen: "Curtius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Rufus", origin: "Mettius Curtius opferte sich für Rom im Lacus Curtius." },
-    { nomen: "Decidius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Saxa", origin: "Caesars treuer hispanischer Feldherr gegen die Parther." },
-    { nomen: "Decimius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Italische Diplomaten und Gesandte an hellenistische Höfe." },
-    { nomen: "Decius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Mus, Traianus", origin: "Berühmt für die 'Devotio' (Opfertod der Konsuln auf dem Schlachtfeld)." },
-    { nomen: "Dellius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Ritterlicher Diplomat, bekannt als 'Reitkünstler der Bürgerkriege'." },
-    { nomen: "Didius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Iulianus", origin: "Triumphatoren in Hispanien; Didius Iulianus ersteigerte 193 das Reich." },
-    { nomen: "Domitius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Ahenobarbus, Calvinus", origin: "Einflussreicher Senatsadel (Rotbärte); Vorfahren von Nero." },
-    { nomen: "Duilius", status: "Plebeius · Plebejer", time: "bis 3. Jh. v. Chr.", stirpes: "—", origin: "Gaius Duilius errang Roms ersten Seesieg (Columna Rostrata)." },
-    { nomen: "Duronius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Bürgerliche Senatorenfamilie." },
-    { nomen: "Egnatius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Rufus, Veratius", origin: "Samnitischer Ursprung; Volkstribun Egnatius forderte Augustus heraus." },
-    { nomen: "Egnatuleius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Kommandeure der Legio Martia im Bürgerkrieg." },
-    { nomen: "Egrilius", status: "Equester · Ritterstand", time: "seit 2. Jh. v. Chr.", stirpes: "Plarianus", origin: "Ostias führende ritterliche Patrizierfamilie der Kaiserzeit." },
-    { nomen: "Epidius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Rhetoriklehrer von Augustus, Antonius und Vergil." },
-    { nomen: "Erucius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Clarus", origin: "Kluge Ankläger und spätantike Konsuln." },
-    { nomen: "Faberius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Privatsekretäre des Diktators Caesar." },
+    { nomen: "Cornelius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Scipio, Sulla, Cinna, Lentulus, Dolabella", origin: "Gens Maior mit den meisten Konsulaten und Triumphen der Republik." },
+    { nomen: "Curtius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Rufus", origin: "Mettius Curtius opferte sich für Rom im Erdspalt des Forum Romanum." },
+    { nomen: "Decius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Mus, Traianus", origin: "Berühmt für die 'Devotio' (Opfertod der Konsuln im Schlachtengetümmel)." },
+    { nomen: "Domitius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Ahenobarbus, Calvinus", origin: "Einflussreicher Senatsadel (Rotbärte); Vorfahren von Kaiser Nero." },
     { nomen: "Fabius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Maximus, Pictor, Buteo, Ambustus", origin: "Gens Maior; Cunctator rettete Rom vor Hannibal; Schlacht an der Cremera." },
-    { nomen: "Fabricius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Luscinus", origin: "Gaius Fabricius: Unbestechlicher Held gegen König Pyrrhos." },
-    { nomen: "Fabrinius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Italische Beamtenfamilie." },
-    { nomen: "Fadius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Gallus", origin: "Freunde Ciceros und Kommunaladel." },
-    { nomen: "Fannius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Strabo, Caepio", origin: "Urheber der Lex Fannia gegen den Luxusaufwand." },
-    { nomen: "Favonius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Marcus Favonius, treuer republikanischer Schüler Catos." },
-    { nomen: "Feridius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Reiche ritterliche Gutsbesitzer in Mittelitalien." },
-    { nomen: "Flaminius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Gaius Flaminius erbaute die Via Flaminia; fiel am Trasimeno." },
-    { nomen: "Flavius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Vespasianus, Titus, Domitianus", origin: "Kaiserdynastie; in der Spätantike kaiserlicher Ehrentitel aller Beamten." },
-    { nomen: "Fonteius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Capito", origin: "Uraltes Priestergeschlecht aus Tusculum (Gott Fons)." },
-    { nomen: "Foslius", status: "Patricius · Patrizier", time: "bis 4. Jh. v. Chr.", stirpes: "Flaccinator", origin: "Patrizische Konsulartribunen der Frührepublik." },
-    { nomen: "Fufius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Calenus, Geminus", origin: "Konsuln und Legaten Caesars im Gallischen Krieg." },
-    { nomen: "Fulcinius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Trio", origin: "Mächtige Senatorenfamilie unter Kaiser Tiberius." },
-    { nomen: "Fulvius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Flaccus, Nobilior, Centumalus", origin: "Einflussreichste plebejische Dynastie im 3. Jh. v. Chr." },
-    { nomen: "Fundanius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Fundulus", origin: "Volkstribunen im Ersten Punischen Krieg." },
-    { nomen: "Furfanius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Prätoren und Statthalter von Sizilien." },
-    { nomen: "Furius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Camillus, Medullinus, Philus", origin: "Marcus Furius Camillus: Zweiter Gründer Roms nach dem Galliersturm." },
-    { nomen: "Furnius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Konsuln und Redner der augusteischen Zeit." },
-    { nomen: "Gabienus", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Bürgerkriegsoffiziere des Pompeius." },
-    { nomen: "Gabinius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Aulus Gabinius gab Pompeius das Kommando gegen die Piraten." },
-    { nomen: "Gallius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Prätoren der späten Republik." },
-    { nomen: "Gallonius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Berühmte Feinschmecker und Kaufleute." },
-    { nomen: "Gavius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Kommunaladel Mittelitaliens." },
-    { nomen: "Gellius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Publicola", origin: "Gelehrte Senatoren (Aulus Gellius: Noctes Atticae)." },
-    { nomen: "Geminius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Senatoren und Legaten." },
-    { nomen: "Genucius", status: "Plebeius · Plebejer", time: "5. bis 2. Jh. v. Chr.", stirpes: "Augurinus, Aventinensis", origin: "Leges Genuciae: Meilenstein der Gleichberechtigung der Plebejer." },
-    { nomen: "Granius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Flaccus", origin: "Mächtige Reeder und Kaufleute aus Puteoli." },
-    { nomen: "Gratidius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Verwandte von Marius und Cicero aus Arpinum." },
-    { nomen: "Helvius", status: "Plebeius · Plebejer", time: "seit um 200 v. Chr.", stirpes: "Cinna, Pertinax", origin: "Dichter Helvius Cinna; Kaiser Pertinax." },
-    { nomen: "Holconius", status: "Equester · Ritterstand", time: "3. bis 1. Jh. v. Chr.", stirpes: "Rufus", origin: "Reichster Bauherrenadel von Pompeji." },
-    { nomen: "Horatius", status: "Patricius · Patrizier", time: "6. bis 4. Jh. v. Chr.", stirpes: "Cocles, Pulvillus, Barbatus", origin: "Horatius Cocles hielt allein die Brücke gegen die Etrusker." },
-    { nomen: "Icilius", status: "Plebeius · Plebejer", time: "5. bis 4. Jh. v. Chr.", stirpes: "Ruga", origin: "Vorkämpfer der Plebejerrechte auf dem Aventin." },
-    { nomen: "Insteius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Kavallerieoffiziere." },
-    { nomen: "Iulius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Caesar, Iullus", origin: "Gens Maior; Abstammung von Göttin Venus; Begründer des Prinzipats." },
-    { nomen: "Iunius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Brutus, Silanus, Pennus", origin: "Befreier Roms von den Königen 509 v. Chr.; Attentäter Caesars." },
-    { nomen: "Iuventius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Thalna, Celsus", origin: "Erstes plebejisches Geschlecht Tusculums mit einer Prätur." },
-    { nomen: "Laberius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Decimus Laberius: Meister der römischen Theatermimen." },
-    { nomen: "Labienus", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Titus Labienus: Caesars fähigster Feldherr in Gallien." },
-    { nomen: "Laelius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Sapiens", origin: "Gaius Laelius: Bester Freund Scipios, Vorbild der Humanitas." },
-    { nomen: "Laenius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Geschäftsfreunde von Atticus und Cicero in Brundisium." },
-    { nomen: "Laetorius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Frühe Volkstribunen für die Plebs-Freiheiten." },
-    { nomen: "Lafrenius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Militärtribunen im Bundesgenossenkrieg." },
-    { nomen: "Lamponius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Lukanische Heerführer im Aufstand gegen Rom." },
-    { nomen: "Larcius", status: "Patricius · Patrizier", time: "5. bis 1. Jh. v. Chr.", stirpes: "Flavus", origin: "Titus Larcius war erster Diktator der Republik (501 v. Chr.)." },
-    { nomen: "Licinius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Crassus, Lucullus, Murena", origin: "Milliardäre (Crassus), Feldherren (Lucullus) und Gesetzesreformer." },
-    { nomen: "Ligarius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Ritterlicher Senatsadel (verteidigt von Cicero vor Caesar)." },
-    { nomen: "Ligurius", status: "Plebeius · Plebejer", time: "bis 1. Jh. v. Chr.", stirpes: "—", origin: "Vertraute des Diktators Caesar." },
-    { nomen: "Livineius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Regulus", origin: "Senatoren und Münzmeister unter Augustus." },
-    { nomen: "Livius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Drusus, Salinator", origin: "Dynastie der Drusi; Kaiserin Livia; Historiker Titus Livius." },
-    { nomen: "Lollius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Marcus Lollius: Vertrauter des Kaisers Augustus." },
-    { nomen: "Lucceius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Geschichtsschreiber und Bundesgenosse Caesars." },
-    { nomen: "Lucilius", status: "Equester · Ritterstand", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Gaius Lucilius: Schöpfer der römischen Verssatire." },
-    { nomen: "Lucretius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Tricipitinus, Gallus, Vespillo", origin: "Lucretias Schändung beendete die Königszeit; Dichter Lukrez." },
-    { nomen: "Lutatius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Catulus, Cerco", origin: "Catulus beendete den 1. Punischen Krieg bei den Ägadischen Inseln." },
-    { nomen: "Maecenas", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Königliche Etruskerabkunft; Schöpfer der augusteischen Kulturblüte." },
-    { nomen: "Maecius", status: "Plebeius · Plebejer", time: "2. bis 1. Jh. v. Chr.", stirpes: "—", origin: "Literarische Notabeln und Prätoren." },
-    { nomen: "Maelius", status: "Plebeius · Plebejer", time: "5. bis 4. Jh. v. Chr.", stirpes: "—", origin: "Spurius Maelius verschenkte Getreide; von Ahala getötet." },
-    { nomen: "Maenius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "—", origin: "Erfinder der Columna Maenia und der Balkone am Forum." },
-    { nomen: "Magius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Adelsfamilie aus Cremona; Ahnen des Dichters Vergil." },
-    { nomen: "Mallius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Konsuln in den verheerenden Kimbernkriegen." },
-    { nomen: "Mamilius", status: "Plebeius · Plebejer", time: "5. bis 1. Jh. v. Chr.", stirpes: "Turrinus, Vitulus", origin: "Uralter Königsadel aus Tusculum; Mamilia-Dynastie." },
-    { nomen: "Manilius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Urheber der Lex Manilia zur Vollmacht des Pompeius." },
-    { nomen: "Manius", status: "Patricius · Patrizier", time: "6. Jh. v. Chr.", stirpes: "—", origin: "Archaikes Königs- und Priestergeschlecht." },
-    { nomen: "Manlius", status: "Patricius · Patrizier", time: "5. bis 1. Jh. v. Chr.", stirpes: "Torquatus, Capitolinus, Vulso", origin: "Retter des Kapitols vor den Kelten; Torquatus opferte seinen Sohn." },
+    { nomen: "Fabricius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Luscinus", origin: "Gaius Fabricius: Unbestechliches Tugendvorbild gegen Pyrrhos." },
+    { nomen: "Flavius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Vespasianus, Titus, Domitianus", origin: "Kaiserdynastie; in der Spätantike senatorisches Standespräfix." },
+    { nomen: "Fonteius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Capito", origin: "Uraltes Priestergeschlecht aus Tusculum (Quellgott Fons)." },
+    { nomen: "Fulvius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Flaccus, Nobilior, Centumalus", origin: "Einflussreichste plebejische Senatorendynastie des 3. Jh. v. Chr." },
+    { nomen: "Furius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Camillus, Medullinus, Philus", origin: "Marcus Furius Camillus: Zweiter Gründer Roms nach der Keltenkatastrophe." },
+    { nomen: "Horatius", status: "Patricius · Patrizier", time: "6. bis 4. Jh. v. Chr.", stirpes: "Cocles, Pulvillus, Barbatus", origin: "Horatius Cocles hielt allein die Tiberbrücke gegen die Etrusker." },
+    { nomen: "Hostilius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Mancinus, Tubulus", origin: "Abstammung vom dritten römischen König Tullus Hostilius." },
+    { nomen: "Iulius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Caesar, Iullus", origin: "Gens Maior; göttliche Abstammung von Venus; Begründer des Kaiserreichs." },
+    { nomen: "Iunius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Brutus, Silanus, Pennus", origin: "Befreier Roms von den Tarquiniern 509 v. Chr.; Attentäter Caesars." },
+    { nomen: "Licinius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Crassus, Lucullus, Murena", origin: "Feldherren, Gesetzesreformer und der reichste Römer der Republik (Crassus)." },
+    { nomen: "Livius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Drusus, Salinator", origin: "Dynastie der Drusi; Kaiserin Livia; Geschichtsschreiber Livius." },
+    { nomen: "Lucretius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Tricipitinus, Gallus, Vespillo", origin: "Lucretias Schändung beendete das Königtum; Dichter Lukrez." },
+    { nomen: "Manlius", status: "Patricius · Patrizier", time: "5. bis 1. Jh. v. Chr.", stirpes: "Torquatus, Capitolinus, Vulso", origin: "Retter des Kapitols vor den Kelten; Torquatus opferte seinen Sohn für Disziplin." },
     { nomen: "Marcius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Philippus, Coriolanus, Rex", origin: "Abstammung von König Ancus Marcius; Coriolan belagerte Rom." },
-    { nomen: "Marius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Gaius Marius: Siebenmaliger Konsul, Heeresreformer, Retter Roms." },
-    { nomen: "Matius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Gaius Matius: Treuer Freund Caesars, Gartenbau-Pionier." },
-    { nomen: "Memmius", status: "Plebeius · Plebejer", time: "2. bis 1. Jh. v. Chr.", stirpes: "Regulus", origin: "Senatoren und Adressaten von Lukrez' Weltgedicht." },
-    { nomen: "Menenius", status: "Patricius · Patrizier", time: "5. bis 4. Jh. v. Chr.", stirpes: "Lanatus", origin: "Menenius Agrippa versöhnte die Plebs mit der Magen-Fabel." },
-    { nomen: "Mescinius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Rufus", origin: "Quästoren unter Ciceros Statthalterschaft." },
-    { nomen: "Messius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Volkstribunen." },
-    { nomen: "Metilius", status: "Patricius · Patrizier", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Altes Adelsgeschlecht aus Alba Longa." },
-    { nomen: "Milonius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Kommunale Senatoren und Magistrate." },
-    { nomen: "Minucius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Rufus, Thermus, Augurinus", origin: "Pferdemagister und Erbauer der Porticus Minucia." },
-    { nomen: "Mucius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Scaevola", origin: "Mucius Scaevola verbrannte seine Hand vor König Porsenna." },
-    { nomen: "Mummius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Achaicus", origin: "Lucius Mummius eroberte und zerstörte 146 v. Chr. Korinth." },
-    { nomen: "Munatius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Plancus", origin: "Plancus gründete Lugdunum (Lyon) und Augusta Raurica (Basel)." },
-    { nomen: "Naevius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Gnaeus Naevius schuf das 1. römische Nationalepos." },
-    { nomen: "Nasidienus", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Reicher ritterlicher Schlemmer bei Horaz." },
-    { nomen: "Nautius", status: "Patricius · Patrizier", time: "5. bis 3. Jh. v. Chr.", stirpes: "Rutilus", origin: "Priester und Hüter des trojanischen Palladions." },
-    { nomen: "Neratius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Priscus", origin: "Große Juristen- und Konsularenfamilie der Kaiserzeit." },
-    { nomen: "Nonius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Asprenas, Balbus, Sufenas", origin: "Mächtige Senatorendynastie aus Picenum." },
-    { nomen: "Norbanus", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Balbus, Flaccus", origin: "Konsuln und treue Feldherren der Caesarianer." },
-    { nomen: "Novius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Atellanen-Dichter und Senatoren." },
-    { nomen: "Numerius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Italische Munizipalbeamte." },
-    { nomen: "Numisius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Berühmte Architekten des Kaisers Augustus." },
-    { nomen: "Numitorius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Frühe Volkstribunen für die Rechte der Plebs." },
-    { nomen: "Nummius", status: "Plebeius · Plebejer", time: "2. bis 4. Jh. n. Chr.", stirpes: "Tuscus, Albinus", origin: "Führende Senatsaristokratie der hohen Kaiserzeit." },
-    { nomen: "Numonius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Vala", origin: "Numonius Vala: Legat der unglückseligen Varusschlacht." },
-    { nomen: "Nunnius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Italische Senatoren." },
-    { nomen: "Octavius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Rufus, Augustus", origin: "Aus Velitrae; Octavius wurde als Augustus erster Kaiser Roms." },
-    { nomen: "Ofilius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Aulus Ofilius: Bahnbrechender Zivilrechtslehrer und Freund Caesars." },
-    { nomen: "Ogulnius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Gallus", origin: "Lex Ogulnia: Öffnete Plebejern die Priesterämter (Pontifices)." },
-    { nomen: "Opimius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Lucius Opimius: Zerschlug die Bewegung des Gaius Gracchus." },
-    { nomen: "Oppius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Gaius Oppius: Vertrauter Geheimsekretär Caesars." },
-    { nomen: "Orbilius", status: "Equester · Ritterstand", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Orbilius Pupillus: Strenger Lehrer des Dichters Horaz." },
-    { nomen: "Orbius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Rechtsgelehrte." },
-    { nomen: "Orcivius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Prätoren der späten Republik." },
-    { nomen: "Otacilius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Crassus", origin: "Konsuln im Ersten Punischen Krieg gegen Karthago." },
-    { nomen: "Ovidius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Naso", origin: "Publius Ovidius Naso: Meister der Metamorphosen und Liebeskunst." },
-    { nomen: "Ovinius", status: "Plebeius · Plebejer", time: "4. bis 1. Jh. v. Chr.", stirpes: "—", origin: "Lex Ovinia: Regelung der Senatsaufnahme durch den Zensor." },
-    { nomen: "Paccienus", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Italische Senatoren." },
-    { nomen: "Paccius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Reiche Händler und Munizipalmagistrate." },
-    { nomen: "Paconius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Statthalteradel." },
-    { nomen: "Pacuvius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Marcus Pacuvius: Berühmter Tragödiendichter der Frühzeit." },
-    { nomen: "Papirius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Carbo, Cursor, Crassus", origin: "Cursor war gefeierter Held und Diktator im Samnitenkrieg." },
-    { nomen: "Papius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Mutilus", origin: "Samnitischer Führer im Bundesgenossenkrieg." },
-    { nomen: "Paquius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Senatorenadel." },
-    { nomen: "Pedanius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Fuscus", origin: "Bedeutende Konsularenfamilie der frühen Kaiserzeit." },
-    { nomen: "Peducaeus", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Rechtschaffene Statthalter Siziliens." },
-    { nomen: "Persius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Flaccus", origin: "Aulus Persius Flaccus: Scharfzüngiger Stoiker und Satiriker." },
-    { nomen: "Petillius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Cerialis", origin: "Cerialis schlug den Bataveraufstand des Civilis nieder." },
-    { nomen: "Petreius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Marcus Petreius besiegte Catilina 62 v. Chr. bei Pistoria." },
-    { nomen: "Petronius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Arbiter, Turpilianus", origin: "Petronius Arbiter: Neros berühmter Schiedsrichter des Geschmacks." },
-    { nomen: "Pinarius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Mamercinus, Natta", origin: "Uralte Hüter des Herakles-Kultes an der Ara Maxima." },
-    { nomen: "Plaetorius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Münzmeister der späten Republik." },
-    { nomen: "Plancius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Ritterlicher Bundesgenosse (von Cicero verteidigt)." },
-    { nomen: "Plautius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Silvanus, Hypsaeus", origin: "Aulus Plautius vollführte 43 n. Chr. die Eroberung Britanniens." },
-    { nomen: "Pleminius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Legaten im Zweiten Punischen Krieg." },
-    { nomen: "Poetelius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Libo", origin: "Lex Poetelia Papiria: Abschaffung der Schuldknechtschaft." },
+    { nomen: "Marius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Gaius Marius: Siebenmaliger Konsul, Heeresreformer, Retter Roms vor den Kimbern." },
+    { nomen: "Mucius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Scaevola", origin: "Mucius Scaevola verbrannte seine rechte Hand vor König Porsenna." },
+    { nomen: "Octavius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Rufus, Augustus", origin: "Aus Velitrae; Gaius Octavius stieg als Augustus zum ersten Princeps auf." },
+    { nomen: "Papirius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Carbo, Cursor, Crassus", origin: "Cursor war gefeierter Diktator und Feldherr in den Samnitenkriegen." },
     { nomen: "Pompeius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Magnus, Strabo, Rufus", origin: "Pompeius der Große: Dreifacher Triumphator über drei Erdteile." },
-    { nomen: "Pompilius", status: "Plebeius · Plebejer", time: "5. bis 1. Jh. v. Chr.", stirpes: "—", origin: "Traditionelle Abstammung vom zweiten König Numa Pompilius." },
-    { nomen: "Pomponius", status: "Equester · Ritterstand", time: "seit 4. Jh. v. Chr.", stirpes: "Atticus, Bassus, Molo", origin: "Titus Pomponius Atticus: Reicher Verleger, Ritter, Freund Ciceros." },
-    { nomen: "Pontius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Pilatus, Telesinus", origin: "Samnitischer Ursprung; Pontius Pilatus regierte Iudaea." },
-    { nomen: "Popillius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Laenas", origin: "Laenas zog im Sand den Kreis vor König Antiochos IV." },
-    { nomen: "Poppaedius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Silo", origin: "Quintus Poppaedius Silo: Feldherr der Italiker gegen Rom." },
-    { nomen: "Poppaeus", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Sabinus", origin: "Kaiserin Poppaea Sabina war Neros Gemahlin." },
-    { nomen: "Porcius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Cato, Licinus", origin: "Cato der Ältere ('Carthago delenda est') und Cato von Utica." },
-    { nomen: "Postumius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Albinus, Regillensis", origin: "Sieger der Schlacht am Regillus-See (496 v. Chr.); höchste Nobilität." },
-    { nomen: "Potitius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Uralte patrizische Priesterfamilie des Hercules-Kultes." },
-    { nomen: "Prifernius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Paconianus", origin: "Statthalter und Militärtribunen." },
-    { nomen: "Proculus", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Juristen und Konsuln der Kaiserzeit." },
-    { nomen: "Publicius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Malleolus, Bibulus", origin: "Erbauer des Clivus Publicius auf den Aventin." },
-    { nomen: "Publilius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Philo, Volero", origin: "Publilius Philo öffnete den Plebejern die Prätur und Zensur." },
-    { nomen: "Pullius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Opferwächter und Priester." },
-    { nomen: "Pupius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Frühe republikanische Senatsfamilie." },
-    { nomen: "Quinctilius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Varus", origin: "Publius Quinctilius Varus verlor drei Legionen im Teutoburger Wald." },
-    { nomen: "Quinctius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Cincinnatus, Capitolinus, Flamininus", origin: "Cincinnatus verließ den Pflug, rettete Rom und trat sofort zurück." },
-    { nomen: "Rabirius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Postumus", origin: "Großkaufleute und Hofarchitekten der flavischen Kaiser." },
-    { nomen: "Rabuleius", status: "Plebeius · Plebejer", time: "5. Jh. v. Chr.", stirpes: "—", origin: "Volkstribunen der frühen Republik." },
-    { nomen: "Racilius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Treue Tribunen gegen Publius Clodius." },
-    { nomen: "Raecius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Munizipaladel aus Norditalien." },
-    { nomen: "Ragonius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Celsus", origin: "Kaiserzeitliche Senatoren und Statthalter." },
-    { nomen: "Romilius", status: "Patricius · Patrizier", time: "5. Jh. v. Chr.", stirpes: "Rocus", origin: "Konsuln der Urzeit und Namensgeber der Tribus Romilia." },
-    { nomen: "Roscius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Amerinus, Gallus", origin: "Sextus Roscius (von Cicero gerettet); Quintus Roscius (Schauspielgenie)." },
-    { nomen: "Rubrius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Urheber der Lex Rubria zur Koloniegründung in Karthago." },
-    { nomen: "Rutilius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Rufus, Lupus", origin: "Publius Rutilius Rufus: Stoiker und unbestechliches Vorbild." },
-    { nomen: "Saenius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Senatoren zur Zeit der Catilinarischen Verschwörung." },
-    { nomen: "Sallienus", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Militärtribunen der Kaiserzeit." },
-    { nomen: "Sallustius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Crispus", origin: "Gaius Sallustius Crispus: Bedeutender Historiker der Catilina-Verschwörung." },
-    { nomen: "Salonius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "—", origin: "Prätoren und Verwandte Catos des Älteren." },
-    { nomen: "Salvius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Otho, Iulianus", origin: "Kaiser Otho; Salvius Iulianus schuf das Edictum Perpetuum." },
-    { nomen: "Satrius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Senatoren und Offiziere der Bürgerkriege." },
-    { nomen: "Saturius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Richter und Ankläger." },
-    { nomen: "Saufeius", status: "Equester · Ritterstand", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Epikureischer Gelehrten- und Ritteradel in Tusculum." },
-    { nomen: "Scantinius", status: "Plebeius · Plebejer", time: "3. Jh. v. Chr.", stirpes: "—", origin: "Namensgeber der Lex Scantinia." },
-    { nomen: "Scaptius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Namensgeber der Tribus Scaptia." },
-    { nomen: "Scribonius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Curio, Libo", origin: "Curio war brillanter Redner und Volkstribun Caesars." },
-    { nomen: "Seius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Strabo", origin: "Prätorianerpräfekten; Seianus beherrschte Rom unter Tiberius." },
-    { nomen: "Selicius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Ritterlicher Geldadel und Finanzberater." },
-    { nomen: "Sempronius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Gracchus, Blaesus, Atratinus", origin: "Die Gracchen starben für ihre Bodenreformen zur Rettung der Plebs." },
-    { nomen: "Sentius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Saturninus", origin: "Konsuln und hochrangige Statthalter Syriens." },
-    { nomen: "Septimius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Severus, Geta", origin: "Afro-römische Nobilität; Begründer der Severer-Kaiserdynastie." },
-    { nomen: "Septumuleius", status: "Plebeius · Plebejer", time: "2. Jh. v. Chr.", stirpes: "—", origin: "Erhielt das Kopfgeld für den getöteten Gaius Gracchus." },
-    { nomen: "Sergius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Catilina, Fidenas", origin: "Uralte trojanische Gens (Sergestus); Catilina erschütterte 63 v. Chr. Rom." },
-    { nomen: "Serius", status: "Plebeius · Plebejer", time: "2. Jh. v. Chr.", stirpes: "—", origin: "Italische Munizipalbeamte." },
-    { nomen: "Sertorius", status: "Plebeius · Plebejer", time: "2. bis 1. Jh. v. Chr.", stirpes: "—", origin: "Quintus Sertorius: Genialer Rebell und Feldherr im hispanischen Exil." },
-    { nomen: "Servilius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Ahala, Caepio, Vatia, Isauricus", origin: "Servilius Ahala erstach den Tyrannen Maelius zur Rettung Roms." },
-    { nomen: "Servius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Juristen und Kommentatoren." },
-    { nomen: "Sestius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Capitolinus", origin: "Patrizische Konsuln der Frühzeit und Senatoren." },
-    { nomen: "Sextilius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "—", origin: "Statthalter der Provinz Africa." },
-    { nomen: "Sextius", status: "Plebeius · Plebejer", time: "seit 4. Jh. v. Chr.", stirpes: "Lateranus, Calvinus", origin: "Sextius Lateranus war erster plebejischer Konsul der Republik (366 v. Chr.)." },
-    { nomen: "Siccius", status: "Patricius · Patrizier", time: "5. Jh. v. Chr.", stirpes: "Dentatus", origin: "Lucius Siccius Dentatus: Unbesiegbarer 'römischer Achill' mit 140 Wunden." },
-    { nomen: "Sicinius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Bellutus", origin: "Führer der Plebs beim ersten Auszug auf den Heiligen Berg (Mons Sacer)." },
-    { nomen: "Silius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Italicus, Nerva", origin: "Silius Italicus: Konsul und Dichter des Punica-Epos." },
-    { nomen: "Sittius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Publius Sittius: Söldnerführer und Statthalter Caesars in Numidien." },
-    { nomen: "Sosius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Senecio", origin: "Gaius Sosius eroberte Jerusalem für Marcus Antonius." },
-    { nomen: "Staienus", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Richter." },
-    { nomen: "Staius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Murcus", origin: "Feldherren der Bundesgenossen und Admirale Caesars." },
-    { nomen: "Statilius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Taurus", origin: "Titus Statilius Taurus erbaute Roms 1. steinernes Amphitheater." },
-    { nomen: "Statius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Publius Papinius Statius: Kaiserzeitlicher Dichter der Thebais." },
-    { nomen: "Suillius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Caesoninus, Rufus", origin: "Gefürchtete Ankläger unter Kaiser Claudius." },
-    { nomen: "Sulpicius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Galba, Rufus, Camerinus", origin: "Gens Maior; Kaiser Galba stürzte Kaiser Nero 68 n. Chr." },
-    { nomen: "Tadius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Senatoren der ausgehenden Bürgerkriege." },
-    { nomen: "Tarquinius", status: "Patricius · Patrizier", time: "seit 6. Jh. v. Chr.", stirpes: "Superbus, Collatinus", origin: "Königsgeschlecht der Etruskerzeit; 509 v. Chr. für immer verbannt." },
-    { nomen: "Tarquitius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Priscus", origin: "Hüter der etruskischen Blitz- und Leberschau-Bücher." },
-    { nomen: "Tarrutius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Lucius Tarrutius: Philosoph, Mathematiker und Astrologe Ciceros." },
-    { nomen: "Teidius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Senatoren in den Bürgerkriegen." },
-    { nomen: "Tempanius", status: "Plebeius · Plebejer", time: "5. Jh. v. Chr.", stirpes: "—", origin: "Sextus Tempanius rettete die römische Reiterei gegen die Volsker." },
-    { nomen: "Terentius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Varro, Afer", origin: "Komödiendichter Terenz; Universalgelehrter Marcus Terentius Varro." },
-    { nomen: "Terrasidius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Offiziere der 7. Legion im Gallischen Krieg." },
-    { nomen: "Tettius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Iulianus", origin: "Tettius Iulianus errang den Sieg gegen die Daker bei Tapae." },
-    { nomen: "Tiburtius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Centurionen und Magistrate." },
-    { nomen: "Ticina", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Römische Münzmeister." },
-    { nomen: "Tillius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Cimber", origin: "Tillius Cimber gab durch Zupfen der Toga das Signal zum Cäsarmord." },
-    { nomen: "Tineius", status: "Plebeius · Plebejer", time: "2. Jh. n. Chr.", stirpes: "Sacerdos", origin: "Bedeutende Konsularenfamilie der Kaiserzeit." },
-    { nomen: "Titinius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Dichter und Centurionen der Republik." },
-    { nomen: "Titius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Marcus Titius: Konsul und Flottenbefehlshaber." },
-    { nomen: "Titurius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Sabinus", origin: "Quintus Titurius Sabinus: Legat Caesars im Gallischen Krieg." },
-    { nomen: "Tolumnius", status: "Patricius · Patrizier", time: "5. Jh. v. Chr.", stirpes: "—", origin: "Etruskischer Königsadel aus Veji." },
-    { nomen: "Toranius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Aedilen und Bürgerkriegsrichter." },
-    { nomen: "Trebatius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "Testa", origin: "Gaius Trebatius Testa: Meister des Rechts und Berater Caesars." },
-    { nomen: "Trebellius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Maximus", origin: "Statthalter von Britannien." },
-    { nomen: "Trebius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Republikanische Feldgeschworene." },
-    { nomen: "Trebonius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Gaius Trebonius: Konsul und Verschwörer gegen Caesar." },
-    { nomen: "Tremilius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Scrofa", origin: "Verfasser berühmter Werke über die Landwirtschaft." },
-    { nomen: "Tuccius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "—", origin: "Italische Notabeln." },
+    { nomen: "Porcius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Cato, Licinus", origin: "Cato der Ältere ('Carthago delenda est') und Cato Uticensis." },
+    { nomen: "Postumius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Albinus, Regillensis", origin: "Sieger der mythischen Schlacht am Regillus-See (496 v. Chr.)." },
+    { nomen: "Proculeius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Gaius Proculeius: Engster ritterlicher Vertrauter des Kaisers Augustus." },
+    { nomen: "Quinctius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Cincinnatus, Capitolinus, Flamininus", origin: "Cincinnatus verließ den Pflug, rettete die Stadt und legte das Amt nieder." },
+    { nomen: "Sempronius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Gracchus, Blaesus, Atratinus", origin: "Die Brüder Gracchus starben für ihre Agrarreformen zum Schutz der Bürger." },
+    { nomen: "Sergius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Catilina, Fidenas", origin: "Trojanischer Ursprung (Sergestus); Catilinas Verschwörung erschütterte Rom." },
+    { nomen: "Servilius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Ahala, Caepio, Vatia, Isauricus", origin: "Servilius Ahala erstach den Tyrannen Maelius zur Rettung der Republik." },
+    { nomen: "Sulpicius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Galba, Rufus, Camerinus", origin: "Gens Maior; Kaiser Galba beendete die Julisch-Claudische Herrschaft." },
+    { nomen: "Tarquinius", status: "Patricius · Patrizier", time: "seit 6. Jh. v. Chr.", stirpes: "Superbus, Collatinus", origin: "Etruskisches Königsgeschlecht; 509 v. Chr. für immer verbannt." },
+    { nomen: "Terentius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Varro, Afer", origin: "Dichter Terenz; Varro galt als gelehrtestes Universalgenie Roms." },
+    { nomen: "Ticinius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Republikanischer Senatoren- und Münzmeisteradel." },
     { nomen: "Tullius", status: "Equester · Ritterstand", time: "seit 5. Jh. v. Chr.", stirpes: "Cicero", origin: "Aus Tusculum; M. Tullius Cicero stieg als Homo Novus zum Konsul auf." },
-    { nomen: "Turius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Prätoren der späten Republik." },
-    { nomen: "Turpilius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Sextus Turpilius: Letzter großer Meister der Palliata-Komödie." },
-    { nomen: "Turranius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Gracilis", origin: "Präfekten der Getreideversorgung (Annona)." },
-    { nomen: "Turulius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Quästoren unter Marcus Antonius." },
-    { nomen: "Ulpius", status: "Plebeius · Plebejer", time: "seit 1. Jh. n. Chr.", stirpes: "Traianus", origin: "Hispano-römisch; Kaiser Trajan brachte das Reich zur größten Blüte." },
-    { nomen: "Umbrenus", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Freigelassene und Händler der Bürgerkriege." },
-    { nomen: "Ummidius", status: "Plebeius · Plebejer", time: "1. und 2. Jh. n. Chr.", stirpes: "Quadratus", origin: "Statthalter Syriens und hochangesehene Konsuln." },
-    { nomen: "Valerius", status: "Patricius · Patrizier", time: "seit 4. Jh. v. Chr.", stirpes: "Flaccus, Laevinus, Maximus, Messalla, Poplicola", origin: "Gens Maior; Valerius Poplicola begründete mit Brutus die Republik." },
-    { nomen: "Valgius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Rufus", origin: "Konsuln und Elegiendichter des Augusteischen Kreises." },
-    { nomen: "Varius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Rufus", origin: "Lucius Varius Rufus rettete die Aeneis des Vergil vor dem Verbrennen." },
-    { nomen: "Vatinius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Publius Vatinius: Volkstribun Caesars und Triumphator." },
-    { nomen: "Vedius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Pollio", origin: "Reicher Ritteradel; berüchtigt für seine Muränenbecken." },
-    { nomen: "Velleius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Paterculus", origin: "Velleius Paterculus: Historiker und Kavalleriegeneral des Tiberius." },
-    { nomen: "Vennonius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Historiker der Annalistik." },
-    { nomen: "Ventidius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Bassus", origin: "Ehemaliger Kriegsgefangener; stieg zum Konsul und Parthersieger auf." },
-    { nomen: "Venuleius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Montanus", origin: "Konsuln und Rechtsgelehrte." },
-    { nomen: "Vergilius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Maro", origin: "Publius Vergilius Maro: Schöpfer der Aeneis, Roms Nationaldichter." },
-    { nomen: "Verginius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Tricostus, Rufus", origin: "Verginius tötete Tochter Verginia zum Schutz vor dem Decemvir Appius." },
-    { nomen: "Verrius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Flaccus", origin: "Verrius Flaccus: Prinzenerzieher und Schöpfer des 1. Lexikons." },
-    { nomen: "Vestorius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Großbankiers aus Puteoli; Freunde Ciceros." },
-    { nomen: "Vestrius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Spurinna", origin: "Senatorenadel der frühen Kaiserzeit." },
-    { nomen: "Vettius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "Bolanus, Sabinus", origin: "Mächtige Senatorenfamilie der Kaiserzeit." },
-    { nomen: "Vettulenus", status: "Plebeius · Plebejer", time: "seit 1. Jh. n. Chr.", stirpes: "Cerialis, Civica", origin: "Generäle im Jüdischen Krieg und Konsuln." },
-    { nomen: "Veturius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Calvinus, Cicurinus, Philo", origin: "Uralte Patrizierfamilie; Namensgeber der Tribus Voturia." },
-    { nomen: "Vibellius", status: "Plebeius · Plebejer", time: "3. Jh. v. Chr.", stirpes: "Taurea", origin: "Kampanische Reiteroffiziere im Kampf gegen Rom." },
-    { nomen: "Vibennius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Italische Beamtenfamilie." },
-    { nomen: "Vibidius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "Virro", origin: "Senatoren unter Augustus." },
-    { nomen: "Vibienus", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Von den Banden des Clodius getötete Senatoren." },
-    { nomen: "Vibius", status: "Plebeius · Plebejer", time: "seit 3. Jh. v. Chr.", stirpes: "Pansa, Crispus", origin: "Konsuln und glänzende Redner." },
-    { nomen: "Vibullius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Rufus", origin: "Festungsbaumeister des Pompeius im Bürgerkrieg." },
-    { nomen: "Villius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Annalis, Tappulus", origin: "Lex Villia Annalis: Festlegung der Ämterlaufbahn (Cursus Honorum)." },
-    { nomen: "Vinicius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Treue Konsuln und Heeresführer des Augustus." },
-    { nomen: "Vinius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Titus Vinius war mächtiger Konsul und Berater Kaiser Galbas." },
-    { nomen: "Vipsanius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "Agrippa", origin: "Marcus Vipsanius Agrippa: Feldherr des Augustus, Erbauer des Pantheons." },
-    { nomen: "Virius", status: "Plebeius · Plebejer", time: "3. und 4. Jh. n. Chr.", stirpes: "Lupus, Nicomachus", origin: "Führende Senatoren und Stadtpräfekten der Spätantike." },
-    { nomen: "Visellius", status: "Plebeius · Plebejer", time: "seit 5. Jh. v. Chr.", stirpes: "Varro", origin: "Konsuln und Flottenpräfekten." },
-    { nomen: "Vitellius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "—", origin: "Aulus Vitellius herrschte als Kaiser im Vierkaiserjahr 69 n. Chr." },
-    { nomen: "Vitrasius", status: "Plebeius · Plebejer", time: "seit 1. Jh. n. Chr.", stirpes: "Pollio", origin: "Konsuln und Statthalter unter Marc Aurel." },
-    { nomen: "Voconius", status: "Plebeius · Plebejer", time: "seit 2. Jh. v. Chr.", stirpes: "—", origin: "Lex Voconia: Regelung des Frauen-Erbrechts." },
-    { nomen: "Volcatius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Tullus", origin: "Konsuln und Prätoren der Bürgerkriege." },
-    { nomen: "Volscius", status: "Plebeius · Plebejer", time: "5. Jh. v. Chr.", stirpes: "Fictor", origin: "Frühe Volkstribunen für die Rechte der Plebejer." },
-    { nomen: "Volteius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Münzmeister der späten Republik." },
-    { nomen: "Volturcius", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Kronzeuge bei der Aufdeckung der Catilina-Verschwörung." },
-    { nomen: "Volumnius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Flaccus", origin: "Etruskischer Ursprung (Velimna); Senatoren seit der Frührepublik." },
-    { nomen: "Volusenus", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Quadratus", origin: "Gaius Volusenus: Furchtloser Kundschafter und Reiteroberst Caesars." },
-    { nomen: "Volusius", status: "Plebeius · Plebejer", time: "seit 1. Jh. v. Chr.", stirpes: "Saturninus", origin: "Enorm reiche Senatorendynastie der Kaiserzeit." },
-    { nomen: "Volusus", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "—", origin: "Uralter Stammvater der patrizischen Valeria-Gens." },
-    { nomen: "Vorenus", status: "Plebeius · Plebejer", time: "1. Jh. v. Chr.", stirpes: "—", origin: "Lucius Vorenus: Berühmter Centurio der 11. Legion bei Caesar." }
+    { nomen: "Ulpius", status: "Plebeius · Plebejer", time: "seit 1. Jh. n. Chr.", stirpes: "Traianus", origin: "Hispano-römisch; unter Kaiser Trajan erreichte das Reich die maximale Ausdehnung." },
+    { nomen: "Valerius", status: "Patricius · Patrizier", time: "seit 5. Jh. v. Chr.", stirpes: "Flaccus, Laevinus, Maximus, Messalla, Poplicola", origin: "Gens Maior; Poplicola schuf 509 v. Chr. die Grundgesetze der Bürgerschaft." },
+    { nomen: "Vergilius", status: "Equester · Ritterstand", time: "seit 1. Jh. v. Chr.", stirpes: "Maro", origin: "Publius Vergilius Maro: Dichter der Aeneis, Roms ewiges Nationalepos." },
+    { nomen: "Vipsanius", status: "Equester · Ritterstand", time: "1. Jh. v. Chr.", stirpes: "Agrippa", origin: "Marcus Vipsanius Agrippa: Genie hinter Augustus' Siegen, Erbauer des Pantheons." }
   ].sort((a,b) => a.nomen.localeCompare(b.nomen));
 
-  // Cognomina
+  // COGNOMINA
   const COGNOMINA_DB = [
-    { name: "Acidinus", fem: "Acidina", meaning: "Der Scharfsinnige / Herb-Strenge", origin: "Stirps der Gens Manlia" },
+    { name: "Acidinus", fem: "Acidina", meaning: "Der Herb-Strenge / Scharfsinnige", origin: "Stirps der Gens Manlia" },
     { name: "Acilianus", fem: "Aciliana", meaning: "Adoptivkind aus der Gens Acilia", origin: "Adoptionsname" },
-    { name: "Adventus", fem: "Adventa", meaning: "Die glückhafte Ankunft / Einzug", origin: "Konsul Oclatinius Adventus" },
-    { name: "Aemilianus", fem: "Aemiliana", meaning: "Adoptivspross aus der Gens Aemilia", origin: "Scipio Aemilianus Africanus" },
-    { name: "Afer", fem: "Afra", meaning: "Der aus der Provinz Africa Stammende", origin: "Domitius Afer, Redner" },
+    { name: "Aemilianus", fem: "Aemiliana", meaning: "Adoptivspross der Aemilier", origin: "Scipio Aemilianus Africanus" },
+    { name: "Afer", fem: "Afra", meaning: "Der aus der Provinz Africa Stammende", origin: "Domitius Afer" },
     { name: "Agricola", fem: "Agricola", meaning: "Der Ackerbauer / Feldherr", origin: "Gnaeus Iulius Agricola" },
     { name: "Agrippa", fem: "Agrippina", meaning: "Mit den Füßen voran geboren", origin: "M. Vipsanius Agrippa" },
     { name: "Ahala", fem: "Ahala", meaning: "Achselhöhle / Kurzschwertträger", origin: "C. Servilius Ahala" },
-    { name: "Ahenobarbus", fem: "Ahenobarba", meaning: "Rotbart / Bronzebart der Domitier", origin: "Gens Domitia" },
-    { name: "Albinus", fem: "Albina", meaning: "Der Weißhaarige / Hellglänzende", origin: "Clodius Albinus, Gegenkaiser" },
-    { name: "Albus", fem: "Alba", meaning: "Der Hellhäutige / Weiße", origin: "Postumius Albus" },
-    { name: "Anullinus", fem: "Anullina", meaning: "Der Träger des Ehren-Siegelringes", origin: "Cornelius Anullinus" },
-    { name: "Aper", fem: "Apra", meaning: "Der wilde Keiler / Eber", origin: "M. Flavius Aper" },
+    { name: "Ahenobarbus", fem: "Ahenobarba", meaning: "Der Rotbart / Bronzebart", origin: "Gens Domitia" },
+    { name: "Albinus", fem: "Albina", meaning: "Der Weißhaarige / Hellglänzende", origin: "Postumius Albinus" },
+    { name: "Albus", fem: "Alba", meaning: "Der Helle / Aufrichtige", origin: "Altrömischer Beiname" },
+    { name: "Anullinus", fem: "Anullina", meaning: "Träger des ritterlichen Ehrenrings", origin: "Cornelius Anullinus" },
+    { name: "Aper", fem: "Apra", meaning: "Der Keiler / Unerschrockene", origin: "Flavius Aper" },
     { name: "Aquila", fem: "Aquila", meaning: "Der Legionsadler", origin: "Pontius Aquila" },
     { name: "Aquilinus", fem: "Aquilina", meaning: "Der mit den Adleraugen", origin: "Herminius Aquilinus" },
-    { name: "Arvina", fem: "Arvina", meaning: "Festes Fett / Wohlstandsspeck", origin: "Cornelius Cossus Arvina" },
     { name: "Asellio", fem: "Asellio", meaning: "Der Eseltreiber / Bescheidene", origin: "Sempronius Asellio" },
-    { name: "Asina", fem: "Asina", meaning: "Die Eselin (selbstironischer Stolz)", origin: "Scipio Asina" },
-    { name: "Asprenas", fem: "Asprenas", meaning: "Die Espen-Esche / Standhafter", origin: "Nonius Asprenas" },
+    { name: "Asina", fem: "Asina", meaning: "Die Eselin (stoischer Stolz)", origin: "Scipio Asina" },
     { name: "Atratinus", fem: "Atratina", meaning: "Vom Fluss Atratus / Dunkel gewandet", origin: "Sempronius Atratinus" },
-    { name: "Atticus", fem: "Attica", meaning: "Der Mann aus Athen / Feingeist", origin: "Pomponius Atticus" },
-    { name: "Augustanus", fem: "Augustana", meaning: "Dem Kaiserhaus zugehörig", origin: "Sosius Priscus" },
+    { name: "Atticus", fem: "Attica", meaning: "Der Athener Feingeist", origin: "Pomponius Atticus" },
+    { name: "Augustanus", fem: "Augustana", meaning: "Dem kaiserlichen Hof Verbundener", origin: "Kaiserzeit" },
     { name: "Aurelianus", fem: "Aureliana", meaning: "Adoptivkind aus der Gens Aurelia", origin: "Kaiser Aurelian" },
-    { name: "Auspex", fem: "Auspex", meaning: "Der Vogelschauer / Priester", origin: "Silvius Auspex" },
-    { name: "Auxentius", fem: "Auxentia", meaning: "Der Wachsende / Gedeihende", origin: "Spätantikes Signum" },
-    { name: "Avienus", fem: "Aviena", meaning: "Aus der Gens Aviena stammend", origin: "Postumius Avienus" },
-    { name: "Aviola", fem: "Aviola", meaning: "Das Vögelchen", origin: "Acilius Aviola" },
-    { name: "Avitus", fem: "Avita", meaning: "Der Ehrwürdige wie ein Großvater", origin: "Kaiser Avitus" },
-    { name: "Balbillus", fem: "Balbilla", meaning: "Der liebenswerte kleine Stotterer", origin: "Claudius Balbillus" },
+    { name: "Auspex", fem: "Auspex", meaning: "Der Vogelschauer / Vorzeichenseher", origin: "Sakralamt" },
+    { name: "Avitus", fem: "Avita", meaning: "Der Großväterlich-Ehrwürdige", origin: "Spätantike Konsuln" },
     { name: "Balbus", fem: "Balba", meaning: "Der mit der Zunge Anstoßende", origin: "Cornelius Balbus" },
     { name: "Barbatus", fem: "Barbata", meaning: "Der Vollbärtige alter Sitte", origin: "Quinctius Barbatus" },
-    { name: "Barbula", fem: "Barbula", meaning: "Der Träger des Spitzbärtchens", origin: "Aemilius Barbula" },
-    { name: "Bassus", fem: "Bassa", meaning: "Der Korpulente / Wohlgenährte", origin: "Ventidius Bassus" },
-    { name: "Bestia", fem: "Bestia", meaning: "Wildes Tier / unbändige Kraft", origin: "Calpurnius Bestia" },
-    { name: "Bibaculus", fem: "Bibacula", meaning: "Der Lebensfrohe Zecher", origin: "Furius Bibaculus" },
+    { name: "Bassus", fem: "Bassa", meaning: "Der Wohlgenährte / Stattliche", origin: "Ventidius Bassus" },
+    { name: "Bestia", fem: "Bestia", meaning: "Das wilde Tier / Unbändige Kraft", origin: "Calpurnius Bestia" },
     { name: "Bibulus", fem: "Bibula", meaning: "Der Durstige / Weinkenner", origin: "Calpurnius Bibulus" },
     { name: "Blaesus", fem: "Blaesa", meaning: "Der Zungenschlagende / Lispelnde", origin: "Sempronius Blaesus" },
-    { name: "Blandus", fem: "Blanda", meaning: "Der Sanfte, Milde und Charmante", origin: "Rubellius Blandus" },
-    { name: "Bolanus", fem: "Bolana", meaning: "Aus der Stadt Bola stammend", origin: "Vettius Bolanus" },
-    { name: "Bradua", fem: "Bradua", meaning: "Der Standhafte / Keltischer Wurzel", origin: "Annius Bradua" },
-    { name: "Brocchus", fem: "Broccha", meaning: "Der mit markanten Vorderzähnen", origin: "Sertorius Brocchus" },
-    { name: "Brutus", fem: "Bruta", meaning: "Der Schelm / Starrsinnige Befreier", origin: "Iunius Brutus" },
-    { name: "Burrus", fem: "Burra", meaning: "Der mit feuerrotem Haar (Pyrrhos)", origin: "Afranius Burrus" },
-    { name: "Caecilianus", fem: "Caeciliana", meaning: "Adoptivkind aus der Gens Caecilia", origin: "Sentius Caecilianus" },
-    { name: "Caepio", fem: "Caepionis", meaning: "Etruskischer Fürst oder Zwiebelpflanzer", origin: "Servilius Caepio" },
-    { name: "Caesar", fem: "Caesaris", meaning: "Der mit vollem Haupthaar Geborene", origin: "Gaius Iulius Caesar" },
-    { name: "Campanianus", fem: "Campaniana", meaning: "Sohn der fruchtbaren Kampanie", origin: "Iulius Campanianus" },
-    { name: "Campanus", fem: "Campana", meaning: "Aus Kampanien stammend", origin: "Secius Campanus" },
-    { name: "Carbo", fem: "Carbonis", meaning: "Die glühende Kohle / Scharfer Redner", origin: "Papirius Carbo" },
-    { name: "Cato", fem: "Catonis", meaning: "Der Gewitzte, Allwissende (catus)", origin: "Porcius Cato der Zensor" },
-    { name: "Catullus", fem: "Catulla", meaning: "Der Junghund / Scharfe Lyriker", origin: "Valerius Catullus" },
+    { name: "Blandus", fem: "Blanda", meaning: "Der Charmante, Sanfte", origin: "Rubellius Blandus" },
+    { name: "Brutus", fem: "Bruta", meaning: "Der Schein-Einfältige / Befreier", origin: "Iunius Brutus" },
+    { name: "Burrus", fem: "Burra", meaning: "Der Feuerhaarige (Pyrrhos)", origin: "Afranius Burrus" },
+    { name: "Caecilianus", fem: "Caeciliana", meaning: "Spross der Gens Caecilia", origin: "Adoptionsname" },
+    { name: "Caepio", fem: "Caepiona", meaning: "Der Zwiebelpflanzer / Etruskerfürst", origin: "Servilius Caepio" },
+    { name: "Caesar", fem: "Caesarina", meaning: "Der mit vollem Haupthaar Geborene", origin: "Iulius Caesar" },
+    { name: "Calatinus", fem: "Calatina", meaning: "Aus der Stadt Calatia stammend", origin: "Atilius Calatinus" },
+    { name: "Calvinus", fem: "Calvina", meaning: "Der Kahlköpfige alter Würde", origin: "Domitius Calvinus" },
+    { name: "Camillus", fem: "Camilla", meaning: "Der Opferdiener der Götter", origin: "Furius Camillus" },
+    { name: "Carbo", fem: "Carbonilla", meaning: "Die glühende Kohle / Feuriger Redner", origin: "Papirius Carbo" },
+    { name: "Catilina", fem: "Catilina", meaning: "Der Schlaue / Verwegene", origin: "Sergius Catilina" },
+    { name: "Cato", fem: "Catonilla", meaning: "Der Scharfsinnige / Allwissende", origin: "Porcius Cato" },
+    { name: "Catullus", fem: "Catulla", meaning: "Der junge Welpe / Scharfer Spötter", origin: "Valerius Catullus" },
     { name: "Celer", fem: "Celeris", meaning: "Der Blitzschnelle / Reiterführer", origin: "Metellus Celer" },
     { name: "Cerialis", fem: "Cerialis", meaning: "Der Göttin Ceres Geweihte", origin: "Petillius Cerialis" },
     { name: "Cethegus", fem: "Cethega", meaning: "Uralter patrizischer Ehrenname", origin: "Cornelius Cethegus" },
-    { name: "Cicero", fem: "Ciceronis", meaning: "Die Kichererbse (Ahnen-Muttermal)", origin: "M. Tullius Cicero" },
+    { name: "Cicero", fem: "Ciceronia", meaning: "Die Kichererbse (Ahnen-Muttermal)", origin: "M. Tullius Cicero" },
     { name: "Cincinnatus", fem: "Cincinnata", meaning: "Der mit dem lockigen Prachthaar", origin: "Quinctius Cincinnatus" },
-    { name: "Civica", fem: "Civica", meaning: "Träger der Bürgerkrone (Corona Civica)", origin: "Vettulenus Civica" },
-    { name: "Commodus", fem: "Commoda", meaning: "Der Höfliche, Umgängliche", origin: "Kaiser Commodus" },
-    { name: "Constans", fem: "Constantia", meaning: "Der Felsenfeste, Unerschütterliche", origin: "Kaiser Constans" },
+    { name: "Civica", fem: "Civica", meaning: "Träger der Eichenlaub-Bürgerkrone", origin: "Vettulenus Civica" },
+    { name: "Commodus", fem: "Commoda", meaning: "Der Umgängliche / Gefällige", origin: "Kaiser Commodus" },
+    { name: "Constans", fem: "Constantia", meaning: "Der Standhafte, Felsenfeste", origin: "Kaiser Constans" },
+    { name: "Corbulo", fem: "Corbulona", meaning: "Der Korbträger / Schanzenbauer", origin: "Domitius Corbulo" },
+    { name: "Coriolanus", fem: "Coriolana", meaning: "Der Bezwinger der Stadt Corioli", origin: "Marcius Coriolanus" },
     { name: "Cornutus", fem: "Cornuta", meaning: "Der Behornte / wie ein Stier Kämpfende", origin: "Sulpicius Cornutus" },
-    { name: "Crassus", fem: "Crassa", meaning: "Der Wohlhabend-Stattliche / Dichte", origin: "Licinius Crassus" },
-    { name: "Dalmatius", fem: "Dalmatia", meaning: "Aus der Provinz Dalmatien", origin: "Flavius Dalmatius" },
-    { name: "Drusus", fem: "Drusilla", meaning: "Keltischer Kriegerfürst / Sieger über Drausus", origin: "Livius Drusus" },
+    { name: "Crassus", fem: "Crassa", meaning: "Der Wohlhabende / Stattliche", origin: "Licinius Crassus" },
+    { name: "Crispus", fem: "Crispa", meaning: "Der Kraushaarige", origin: "Sallustius Crispus" },
+    { name: "Cunctator", fem: "Cunctatrix", meaning: "Der Zögerer / Retter durch Hinhalten", origin: "Fabius Maximus" },
+    { name: "Cursor", fem: "Cursoria", meaning: "Der Schnellläufer / Eilbote", origin: "Papirius Cursor" },
+    { name: "Dentatus", fem: "Dentata", meaning: "Mit Zähnen geboren / Unbeugsam", origin: "Curius Dentatus" },
+    { name: "Dives", fem: "Dives", meaning: "Der sagenhaft Reiche", origin: "Licinius Crassus Dives" },
+    { name: "Drusus", fem: "Drusilla", meaning: "Der keltische Kriegerfürst", origin: "Livius Drusus" },
     { name: "Faustus", fem: "Fausta", meaning: "Der Glücksbegünstigte", origin: "Cornelius Sulla Faustus" },
+    { name: "Felix", fem: "Felicitas", meaning: "Der vom Schicksal Gesegnete", origin: "Cornelius Sulla Felix" },
+    { name: "Fimbria", fem: "Fimbria", meaning: "Die Franse / Zierleiste", origin: "Flavius Fimbria" },
     { name: "Flaccus", fem: "Flacca", meaning: "Der mit den markanten Schlappohren", origin: "Valerius Flaccus; Horaz" },
     { name: "Flamininus", fem: "Flaminina", meaning: "Sohn eines Opferpriesters (Flamen)", origin: "Quinctius Flamininus" },
-    { name: "Florianus", fem: "Floriana", meaning: "Der Blühende / Herrliche", origin: "Kaiser Florianus" },
-    { name: "Geta", fem: "Geta", meaning: "Vom thrakischen Stamm der Geten", origin: "Kaiser Geta" },
-    { name: "Gratianus", fem: "Gratiana", meaning: "Der Dankbare / Gnadenreiche", origin: "Kaiser Gratian" },
-    { name: "Largus", fem: "Larga", meaning: "Der Freigebige / Großzügige", origin: "Caecina Largus" },
-    { name: "Lepidus", fem: "Lepida", meaning: "Der Feinsinnige / Zuvorkommende", origin: "Aemilius Lepidus" },
+    { name: "Florus", fem: "Flora", meaning: "Der Blühende / Jugendliche", origin: "Iulius Florus" },
+    { name: "Frugi", fem: "Frugi", meaning: "Der Ehrenhafte, Rechtschaffene", origin: "Calpurnius Piso Frugi" },
+    { name: "Galba", fem: "Galba", meaning: "Die Made / Flinker Riese", origin: "Sulpicius Galba" },
+    { name: "Geta", fem: "Geta", meaning: "Vom Stamm der Geten", origin: "Kaiser Geta" },
+    { name: "Glabrio", fem: "Glabriona", meaning: "Der Kahlköpfige / Glatte", origin: "Acilius Glabrio" },
+    { name: "Gracchus", fem: "Graccha", meaning: "Die Dohle / Wachsamer Rufer", origin: "Sempronius Gracchus" },
+    { name: "Laenas", fem: "Laenas", meaning: "Der Träger des Priestermantels", origin: "Popillius Laenas" },
+    { name: "Lentulus", fem: "Lentula", meaning: "Der Linsenbauer / Bedächtige", origin: "Cornelius Lentulus" },
+    { name: "Lepidus", fem: "Lepida", meaning: "Der Feinsinnige / Liebenswürdige", origin: "Aemilius Lepidus" },
     { name: "Lucullus", fem: "Luculla", meaning: "Aus dem heiligen Hain (lucus)", origin: "Licinius Lucullus" },
-    { name: "Luscus", fem: "Lusca", meaning: "Der Einäugige im Kampf", origin: "Annius Luscus" },
-    { name: "Malleolus", fem: "Malleola", meaning: "Der kleine Schmiedehammer", origin: "Publicius Malleolus" },
-    { name: "Mamercinus", fem: "Mamercina", meaning: "Sohn des dem Mars Geweihten", origin: "Aemilius Mamercinus" },
-    { name: "Mamercus", fem: "Mamerca", meaning: "Der dem Kriegsgott Mars Gleichende", origin: "Aemilius Mamercus" },
-    { name: "Mammula", fem: "Mammula", meaning: "Mutterbrüstchen / Nährende Güte", origin: "Cornelius Mammula" },
+    { name: "Lupus", fem: "Lupa", meaning: "Der Wolf / Unbarmherzige", origin: "Rutilius Lupus" },
+    { name: "Macer", fem: "Macra", meaning: "Der Hagere / Asketische", origin: "Licinius Macer" },
+    { name: "Mamercus", fem: "Mamerca", meaning: "Der Kriegsgott Mars Gleichende", origin: "Aemilius Mamercus" },
+    { name: "Marcellus", fem: "Marcella", meaning: "Der kleine Krieger / Hammer", origin: "Claudius Marcellus" },
+    { name: "Maximus", fem: "Maxima", meaning: "Der Größte / Ehrwürdigste", origin: "Fabius Maximus" },
+    { name: "Merenda", fem: "Merenda", meaning: "Das Vesperbrot / Gastfreundliche", origin: "Antonius Merenda" },
     { name: "Metellus", fem: "Metella", meaning: "Der Kriegsdienst-Entlohnte", origin: "Caecilius Metellus" },
-    { name: "Mus", fem: "Muris", meaning: "Die flinke Tempelmaus", origin: "Decius Mus" },
-    { name: "Nero", fem: "Neronis", meaning: "Sabinisches Wort für stark und tapfer", origin: "Claudius Nero" },
-    { name: "Nerva", fem: "Nerva", meaning: "Die eiserne Sehne / Lebenskraft", origin: "Kaiser Nerva" },
-    { name: "Pacatus", fem: "Pacata", meaning: "Der Friedensstifter / Beruhigte", origin: "Latinus Pacatus" },
-    { name: "Pansa", fem: "Pansa", meaning: "Der Breitsohlige / Plattfuß", origin: "Vibius Pansa" },
-    { name: "Paullus", fem: "Paulla", meaning: "Der Bescheidene / Geringe", origin: "Aemilius Paullus" },
-    { name: "Probianus", fem: "Probiana", meaning: "Der Rechtschaffene / Rechtskundige", origin: "Petronius Probianus" },
-    { name: "Quadratus", fem: "Quadrata", meaning: "Der Vierschrötige / Standfeste", origin: "Ummidius Quadratus" },
-    { name: "Regillus", fem: "Regilla", meaning: "Der Königliche im Wesen", origin: "Aemilius Regillus" },
-    { name: "Rufus", fem: "Rufa", meaning: "Der mit den roten Haaren", origin: "Sehr verbreiteter Ehrenname" },
-    { name: "Scipio", fem: "Scipionis", meaning: "Der Hirtenstab / Stütze des Vaters", origin: "Cornelii Scipiones" },
-    { name: "Senecio", fem: "Senecionis", meaning: "Der Weitsichtige wie ein Greis", origin: "Sosius Senecio" },
-    { name: "Silanus", fem: "Silana", meaning: "Satyrengleich / Stülpnase", origin: "Iunius Silanus" },
-    { name: "Sulla", fem: "Sullae", meaning: "Der Rötliche / Sonnenbegünstigte", origin: "Cornelius Sulla" },
-    { name: "Tricipitinus", fem: "Tricipitina", meaning: "Vom dreiköpfigen Hügel", origin: "Lucretius Tricipitinus" },
-    { name: "Vespa", fem: "Vespa", meaning: "Etruskischer Sippenname / Hornisse", origin: "Terentius Vespa" },
-    { name: "Victor", fem: "Victoria", meaning: "Der ewige Sieger", origin: "Kaiserlicher Siegesname" },
-    { name: "Victorinus", fem: "Victorina", meaning: "Vom Sieger Abstammender", origin: "Furius Victorinus" },
-    { name: "Vulso", fem: "Vulsula", meaning: "Aus der Etruskerstadt Volsinii", origin: "Manlius Vulso" }
+    { name: "Milo", fem: "Milonia", meaning: "Der Athlet wie Milon von Kroton", origin: "Annius Milo" },
+    { name: "Mus", fem: "Muscula", meaning: "Die flinke Tempelmaus", origin: "Decius Mus" },
+    { name: "Nasica", fem: "Nasica", meaning: "Der Spitznasige / Spürhund", origin: "Scipio Nasica" },
+    { name: "Nero", fem: "Neronilla", meaning: "Der Starke, Tapfere (sabinisches Wort)", origin: "Claudius Nero" },
+    { name: "Nerva", fem: "Nerva", meaning: "Die Sehne / Lebenskraft", origin: "Kaiser Nerva" },
+    { name: "Paullus", fem: "Paulla", meaning: "Der Bescheidene / Kleinere", origin: "Aemilius Paullus" },
+    { name: "Pictor", fem: "Pictrina", meaning: "Der Kunstmaler der Republik", origin: "Fabius Pictor" },
+    { name: "Piso", fem: "Pisonilla", meaning: "Der Erbsenbauer / Mörserer", origin: "Calpurnius Piso" },
+    { name: "Plancus", fem: "Planca", meaning: "Der Plattfuß / Bodenständige", origin: "Munatius Plancus" },
+    { name: "Pollio", fem: "Polliona", meaning: "Der Waffenpolierer", origin: "Asinius Pollio" },
+    { name: "Publicola", fem: "Publicola", meaning: "Der Freund des Bürgerstammes", origin: "Valerius Publicola" },
+    { name: "Pulcher", fem: "Pulchra", meaning: "Der Wunderschöne / Stolze", origin: "Claudius Pulcher" },
+    { name: "Regulus", fem: "Regula", meaning: "Der kleine König / Prinz", origin: "Atilius Regulus" },
+    { name: "Rufus", fem: "Rufa", meaning: "Der mit den roten Haaren", origin: "Sehr verbreitet" },
+    { name: "Rutilus", fem: "Rutila", meaning: "Der Rotgold-Glänzende", origin: "Nautius Rutilus" },
+    { name: "Scaevola", fem: "Scaevola", meaning: "Der Linkshänder (Rechte verbrannt)", origin: "Mucius Scaevola" },
+    { name: "Scipio", fem: "Scipionilla", meaning: "Der Stab / Stütze des Vaters", origin: "Cornelius Scipio" },
+    { name: "Silanus", fem: "Silana", meaning: "Der Satyrhafte / Quellgott", origin: "Iunius Silanus" },
+    { name: "Sulla", fem: "Sullana", meaning: "Der Rötlich-Blonde / Glückliche", origin: "Cornelius Sulla" },
+    { name: "Torquatus", fem: "Torquata", meaning: "Träger des keltischen Halsreifs", origin: "Manlius Torquatus" },
+    { name: "Tubero", fem: "Tuberona", meaning: "Der Bucklige / Beulenharte", origin: "Aelius Tubero" },
+    { name: "Varro", fem: "Varronilla", meaning: "Der Standhafte / Felsblock", origin: "Terentius Varro" },
+    { name: "Varus", fem: "Vara", meaning: "Der Krummbeinige / Reitersmann", origin: "Quinctilius Varus" },
+    { name: "Vatia", fem: "Vatia", meaning: "Der Einwärtsgebogene", origin: "Servilius Vatia" }
   ].sort((a,b) => a.name.localeCompare(b.name));
 
-  // Kosenamen für Freigelassene
+  // FREIGELASSENE
   const LIBERTI_COGNOMINA_DB = [
     { name: "Alexander", fem: "Alexandra", meaning: "Griechisch: Schützer der Männer" },
-    { name: "Callistus", fem: "Calliste", meaning: "Griechisch: Der Allerschönste" },
-    { name: "Epaphroditus", fem: "Epaphrodita", meaning: "Günstling der Liebesgöttin Aphrodite" },
-    { name: "Eros", fem: "Erotis", meaning: "Griechischer Gott der Zuneigung" },
-    { name: "Hermes", fem: "Hermeia", meaning: "Götterbote / Schirmherr des Handels" },
-    { name: "Narcissus", fem: "Narcissa", meaning: "Griechische Narzissenblüte" },
-    { name: "Onesimus", fem: "Onesima", meaning: "Der Nützliche und Getreue" },
-    { name: "Phileros", fem: "Philotis", meaning: "Griechisch: Der die Liebe Suchende" },
-    { name: "Tiro", fem: "Tiro", meaning: "Gelehrter Stenograf Ciceros (Erfinder der Kurzschrift)" }
+    { name: "Amphion", fem: "Amphiona", meaning: "Griechischer Sagenheld und Musiker" },
+    { name: "Callistus", fem: "Calliste", meaning: "Griechisch: Der Wunderschöne" },
+    { name: "Chares", fem: "Charis", meaning: "Der Anmutige und Beliebte" },
+    { name: "Diadumenus", fem: "Diadumena", meaning: "Träger der königlichen Stirnbinde" },
+    { name: "Dionysius", fem: "Dionysia", meaning: "Dem Gott des Weines geweiht" },
+    { name: "Epaphroditus", fem: "Epaphrodita", meaning: "Schützling der Liebesgöttin Aphrodite" },
+    { name: "Eros", fem: "Erotion", meaning: "Griechischer Gott der Liebe / Herzensbursche" },
+    { name: "Glykon", fem: "Glykera", meaning: "Der Süße / Sanftmütige" },
+    { name: "Hermes", fem: "Hermeia", meaning: "Dem Götterboten des Handels geweiht" },
+    { name: "Hilarus", fem: "Hilara", meaning: "Der Heitere und Lebensfrohe" },
+    { name: "Narcissus", fem: "Narcissa", meaning: "Blume der Schönheit; kaiserlicher Sekretär" },
+    { name: "Onesimus", fem: "Onesima", meaning: "Der Nützliche und Treuergebene" },
+    { name: "Pallas", fem: "Palladia", meaning: "Kaiserlicher Finanzminister unter Claudius" },
+    { name: "Phileros", fem: "Philotis", meaning: "Der die Liebe Suchende" },
+    { name: "Polyclitus", fem: "Polyclita", meaning: "Der Weithin Berühmte" },
+    { name: "Soter", fem: "Soteira", meaning: "Der Retter / Heilsbringer" },
+    { name: "Tiro", fem: "Tironilla", meaning: "Gelehrter Sekretär Ciceros, Erfinder der Kurzschrift" }
   ].sort((a,b) => a.name.localeCompare(b.name));
 
-  // ALLE 60 HISTORISCHEN AGNOMINA (VOLLSTÄNDIG & ALPHABETISCH SORTIERT)
+  // AGNOMINA
   const AGNOMINA_DB = [
-    { title: "Achaicus", reason: "Zerstörung Korinths und Zerschlagung des Achaiischen Bundes (Lucius Mummius)" },
-    { title: "Adiabenicus", reason: "Bezwinger des mit den Parthern verbündeten mesopotamischen Vasallenstaates Adiabene (Septimius Severus)" },
-    { title: "Africanus", reason: "Sieger über Hannibal bei Zama & Zerstörer Karthagos (Scipio Africanus Maior & Minor)" },
-    { title: "Alamannicus", reason: "Erfolgreiche Abwehr und Vertreibung der alamannischen Krieger am Rhein und Oberlauf der Donau (Caracalla, Konstantin I.)" },
-    { title: "Alanicus", reason: "Bezwinger der kaukasischen und pontischen Reiterscharen der Alanen (Justinian I.)" },
-    { title: "Allobrogicus", reason: "Vernichtung der Heere der Allobroger und Arverner im südlichen Gallien (Q. Fabius Maximus Allobrogicus)" },
-    { title: "Anticus", reason: "Erfolgreiche Grenzsicherung und Niederwerfung der ostslawischen Anten an der Donau (Justinian I.)" },
-    { title: "Arabicus", reason: "Annektierer des Nabatäerreiches zur Provinz Arabia Petraea (Trajan, Septimius Severus)" },
-    { title: "Armeniacus", reason: "Einnahme der armenischen Königsstadt Artaxata und Einsetzung eines Vasallenherrschers (Lucius Verus, Marcus Aurelius)" },
-    { title: "Asiaticus", reason: "Triumphator über König Antiochos III. in Kleinasien (Lucius Cornelius Scipio)" },
-    { title: "Augustus", reason: "„Der Erhabene / Mehrer des Reiches“, sakral-politischer Ehrenname des Senats zur Begründung des Prinzipats (Gaius Octavius)" },
-    { title: "Balearicus", reason: "Eroberung der Balearen und Zerschlagung der dortigen Seeräuberbasen (Q. Caecilius Metellus Balearicus)" },
-    { title: "Bithynicus", reason: "Befrieder und Verwalter der kleinasiatischen Provinz Bithynien (Q. Pompeius Bithynicus)" },
-    { title: "Britannicus", reason: "Eroberer der britannischen Inseln (Kaiser Claudius & sein Sohn Britannicus)" },
-    { title: "Calatinus", reason: "Erfolgreiche Belagerung und Einnahme der kampanischen Festung Calatia (Aulus Atilius Calatinus)" },
-    { title: "Caledonicus", reason: "Sieger über die kaledonischen Kriegerstämme im schottischen Hochland (Q. Petillius Cerialis)" },
-    { title: "Capitolinus", reason: "Nächtlicher Retter der belagerten römischen Festung auf dem Kapitol vor den Kelten (Marcus Manlius Capitolinus)" },
-    { title: "Carpicus", reason: "Vernichtung der an der unteren Donau einfallenden karpischen Kriegerstämme (Philippus Arabs, Galerius)" },
-    { title: "Censorinus", reason: "Einziger römischer Staatsmann, der wegen untadeliger Strenge zweimal in das Amt des Zensors gewählt wurde (Gaius Marcius Rutilus Censorinus)" },
-    { title: "Coriolanus", reason: "Heldenhafte Erstürmung der befestigten Volskerstadt Corioli (Gaius Marcius Coriolanus)" },
-    { title: "Corvinus", reason: "Sieger im Duell gegen einen gallischen Krieger mit Beistand eines auf dem Helm landenden Raben (Marcus Valerius Messalla Corvinus)" },
-    { title: "Creticus", reason: "Vollständige Unterwerfung und Eingliederung der Seeräuberinsel Kreta (Q. Caecilius Metellus Creticus)" },
-    { title: "Cunctator", reason: "Bewahrer Roms durch die Zermürbungsstrategie des planvollen Hinhaltens gegen Hannibal (Quintus Fabius Maximus)" },
-    { title: "Cursor", reason: "„Der Läufer“, für legendäre körperliche Ausdauer und blitzschnelle Truppenmanöver im Samnitenkrieg (Lucius Papirius Cursor)" },
-    { title: "Dacicus", reason: "Sieger über König Decebalus und Unterwerfer Dakiens (Trajan)" },
-    { title: "Dalmaticus", reason: "Befriedung und Unterwerfung der illyrischen Stämme Dalmatiens (L. Caecilius Metellus Dalmaticus)" },
-    { title: "Dentatus", reason: "„Mit Zähnen Geborener“, Sinnbild altrömischer Härte, Schlichtheit und Unbestechlichkeit gegen König Pyrrhus (Manius Curius Dentatus)" },
-    { title: "Felix", reason: "„Der vom Schicksal und den Göttern Begünstigte“, eigenmächtiger Triumphname nach dem Sieg im Bürgerkrieg (Lucius Cornelius Sulla)" },
-    { title: "Fidenas", reason: "Eroberung und Bestrafung der abtrünnigen etruskischen Nachbarstadt Fidenae (Lucius Sergius Fidenas)" },
-    { title: "Francicus", reason: "Niederwerfung und Vertreibung der plündernden Franken am Niederrhein (Probus, Konstantin I., Julian)" },
-    { title: "Frugi", reason: "„Der Rechtschaffene / Tugendhafte“, für unbestechliche persönliche Integrität und strenge Gesetze gegen Amtsmissbrauch (Lucius Calpurnius Piso)" },
-    { title: "Gaetulicus", reason: "Siegreiche Niederwerfung des rebellierenden Nomadenvolkes der Gaetuler in Nordafrika (Cossus Cornelius Lentulus)" },
-    { title: "Germanicus", reason: "Bezwinger der rechtsrheinischen germanischen Kriegsstämme (Drusus, Germanicus)" },
-    { title: "Gothicus", reason: "Vernichtender Triumph über die gotische Invasionsflotte in der Schlacht von Naissus (Claudius II. Gothicus)" },
-    { title: "Gurges", reason: "„Der Schlund / Verschwender“, von der Jugendverschwendung rehabilitiert durch heroische Triumphe über die Samniten (Quintus Fabius Maximus Gurges)" },
-    { title: "Invictus", reason: "„Der Unbesiegte“, religiös-militärischer Ehrentitel in Anlehnung an den Sonnengott Sol Invictus (Commodus, Caracalla, Konstantin)" },
-    { title: "Isauricus", reason: "Erstürmer der befestigten kilikischen Piratenburgen im Taurusgebirge (P. Servilius Vatia)" },
-    { title: "Macedonicus", reason: "Sieger in der Schlacht von Pydna und Vollstrecker der Unterwerfung Makedoniens (Aemilius Paullus, Q. Caecilius Metellus)" },
-    { title: "Magnus", reason: "„Der Große“, verliehen von Sulla für überragende militärische Taten in Afrika und Sizilien (Gnaeus Pompeius Magnus)" },
-    { title: "Medicus", reason: "Siegreiche Abwehr und Unterwerfung medischer Hilfskontingente im Partherkrieg (Marcus Aurelius, Lucius Verus)" },
-    { title: "Mesopotamicus", reason: "Erfolgreicher Vorstoß und Rückgewinnung des Zweistromlandes (Kaiser Carus)" },
-    { title: "Numidicus", reason: "Erfolgreicher Feldherr im Zermürbungskrieg gegen König Jugurtha von Numidien (Q. Caecilius Metellus)" },
-    { title: "Optimus", reason: "„Der Beste aller Kaiser“, vom Senat offiziell zuerkannter Titel für vorbildliche Regierungsführung (Trajan)" },
-    { title: "Palmyrenicus", reason: "Zerschlagung des abtrünnigen Sonderreiches von Palmyra und Gefangennahme von Königin Zenobia (Aurelian)" },
-    { title: "Parthicus", reason: "Eroberer der parthischen Königsmetropole Ktesiphon (Trajan, Lucius Verus, Septimius Severus)" },
-    { title: "Pater Patriae", reason: "„Vater des Vaterlandes“ für die Rettung des Staates vor Catilina (Cicero) bzw. das Beenden der Bürgerkriege (Augustus)" },
-    { title: "Persicus", reason: "Sieger über das persische Sassanidenreich und Zerstörer der königlichen Elitetruppen (Carus, Galerius, Diokletian)" },
-    { title: "Pius", reason: "„Der Pflichtgetreue“, für die unermüdliche Fürbitte zur Rückberufung des Vaters (Metellus Pius) bzw. Treue zu Hadrian (Antoninus Pius)" },
-    { title: "Publicola", reason: "„Freund des Volkes“, verliehen für die Einführung der ersten Bürger- und Freiheitsgesetze nach Sturz der Könige (Publius Valerius Publicola)" },
-    { title: "Regillensis", reason: "Triumph über den Bund der Latiner in der mythischen Schlacht am Regillus-See (Aulus Postumius Albus Regillensis)" },
-    { title: "Restitutor Galliarum", reason: "„Wiederhersteller Galliens“ für die Sicherung der Rheingrenze und Einhegung germanischer Einfälle (Postumus, Aurelian)" },
-    { title: "Restitutor Orbis", reason: "„Wiederhersteller des Erdkreises“ für die Wiedervereinigung des zerfallenen Reiches gegen Gallien und Palmyra (Aurelian)" },
-    { title: "Restitutor Orientis", reason: "„Wiederhersteller des Ostens“ für die Rückeroberung der reichen orientalischen Provinzen (Aurelian)" },
-    { title: "Sapiens", reason: "„Der Weise“, verliehen für herausragende philosophische Besonnenheit, Rechtskenntnis und Staatsklugheit (Gaius Laelius)" },
-    { title: "Sarmaticus", reason: "Siege über die sarmatischen Reitervölker an der pannonischen Donaugrenze (Marcus Aurelius, Diokletian, Konstantin I.)" },
-    { title: "Scaevola", reason: "„Der Linkshänder“, nachdem er furchtlos seine rechte Hand im Feuer verbrannte, um König Porsenna zu trotzen (Gaius Mucius Scaevola)" },
-    { title: "Serranus", reason: "Der direkt bei der Aussaat (serere) auf dem Feld zum Konsulat und Feldherrenamt Berufene (Gaius Atilius Regulus Serranus)" },
-    { title: "Torquatus", reason: "Tötung eines gallischen Hünen im Zweikampf und Abnahme von dessen goldenem Halsreif (Titus Manlius Imperiosus Torquatus)" },
-    { title: "Tremulus", reason: "Bezwinger des rebellierenden Stammes der Herniker und Unterwerfer der Stadt Anagnia (Quintus Marcius Tremulus)" },
-    { title: "Vandalicus", reason: "Zerschlagung des nordafrikanischen Vandalenreiches und Rückeroberung Karthagos (Justinian I. durch Belisar)" }
+    { title: "Achaicus", reason: "Zerstörung Korinths und Beendigung des Achaiischen Krieges 146 v. Chr. (L. Mummius)" },
+    { title: "Adiabenicus", reason: "Sieg über das mesopotamische Reich Adiabene im Partherkrieg (Septimius Severus)" },
+    { title: "Africanus", reason: "Triumph über Hannibal bei Zama & Zerstörung Karthagos (Scipio Africanus Maior & Minor)" },
+    { title: "Alamannicus", reason: "Vertreibung der Alamannenkrieger an Rhein und Donau (Caracalla, Konstantin I.)" },
+    { title: "Alanicus", reason: "Niederwerfung der sarmato-alanischen Reitervölker an der Donau (Justinian I.)" },
+    { title: "Allobrogicus", reason: "Vernichtung des gallischen Heeres der Allobroger an der Isère 121 v. Chr. (Q. Fabius Maximus)" },
+    { title: "Anticus", reason: "Sicherung der Donaugrenze gegen die ostslawischen Anten (Justinian I.)" },
+    { title: "Arabicus", reason: "Annexion des Nabatäerreiches zur Provinz Arabia Petraea (Trajan, Septimius Severus)" },
+    { title: "Armeniacus", reason: "Einnahme der Festung Artaxata und Befriedung Armeniens (Lucius Verus, Marcus Aurelius)" },
+    { title: "Asiaticus", reason: "Triumph über Seleukidenkönig Antiochos III. in der Schlacht bei Magnesia (L. Cornelius Scipio)" },
+    { title: "Augustus", reason: "„Der Erhabene / Mehrer des Reiches“, sakraler Titel des Senats ab 27 v. Chr. (Gaius Octavius)" },
+    { title: "Augusta", reason: "Erhabener Titel für kaiserliche Matronen und Regentinnen Roms (Livia, Agrippina)" },
+    { title: "Balearicus", reason: "Eroberung der Balearen und Ausrottung der Seeräubernester 123 v. Chr. (Q. Caecilius Metellus)" },
+    { title: "Bithynicus", reason: "Verwaltung und Sicherung der Provinz Bithynien im Mithridatischen Krieg (Q. Pompeius)" },
+    { title: "Britannicus", reason: "Eroberung Britanniens 43 n. Chr. (Kaiser Claudius, Sohn Britannicus, Septimius Severus)" },
+    { title: "Calatinus", reason: "Einnahme der kampanischen Bergfestung Calatia im Ersten Punischen Krieg (A. Atilius Calatinus)" },
+    { title: "Cantabricus", reason: "Endgültige Unterwerfung der kriegerischen Kantabrer in Hispanien durch Augustus & Agrippa" },
+    { title: "Capitolinus", reason: "Rettung der belagerten Kapitol-Burg vor den nachtkriechenden Kelten (M. Manlius Capitolinus)" },
+    { title: "Carpicus", reason: "Vernichtung der transdanubischen Karpenkavallerie (Philippus Arabs, Galerius)" },
+    { title: "Censorinus", reason: "Einziger Staatsmann der Republik, der zweimal zum Zensor gewählt wurde (C. Marcius Rutilus)" },
+    { title: "Celticus", reason: "Erfolgreiche Abwehr keltiberischer Aufstände in Mittelhispanien" },
+    { title: "Coriolanus", reason: "Erstürmung der befestigten Volskerstadt Corioli (C. Marcius Coriolanus)" },
+    { title: "Corvinus", reason: "Sieg im ritterlichen Zweikampf gegen einen gallischen Riesen durch Beistand eines Raben (M. Valerius Corvus)" },
+    { title: "Creticus", reason: "Vollständige Unterwerfung und Provinzialisierung Kretas (Q. Caecilius Metellus)" },
+    { title: "Cunctator", reason: "„Der Zögerer“, Rettung Roms vor Hannibal durch planvolles Ausweichen (Q. Fabius Maximus)" },
+    { title: "Cursor", reason: "„Der Eilläufer“, legendäre Ausdauer und Marschtempo gegen die Samniten (L. Papirius Cursor)" },
+    { title: "Dacicus", reason: "Unterwerfung von König Decebalus und Eingliederung der Goldprovinz Dakien (Trajan)" },
+    { title: "Dalmaticus", reason: "Befriedung und Zwangspazifizierung der illyrischen Dalmater (L. Caecilius Metellus)" },
+    { title: "Dentatus", reason: "Unbestechliches Vorbild altrömischer Härte gegen die Gesandten des Pyrrhos (M. Curius Dentatus)" },
+    { title: "Felix", reason: "„Vom Schicksal Gesegneter“, persönlicher Ehrenname nach dem Bürgerkrieg 82 v. Chr. (L. Cornelius Sulla)" },
+    { title: "Fidenas", reason: "Erstürmung und Zerstörung der abtrünnigen Tiberfestung Fidenae (L. Sergius Fidenas)" },
+    { title: "Francicus", reason: "Siegreiche Abwehr der fränkischen Einfälle am Niederrhein (Probus, Konstantin I.)" },
+    { title: "Frugi", reason: "„Der Ehrenmann“, Verfasser der strengen Gesetze gegen senatorische Erpressung (L. Calpurnius Piso)" },
+    { title: "Gaetulicus", reason: "Niederschlagung des Nomadenaufstandes der Gaetuler in Mauretanien (Cossus Cornelius Lentulus)" },
+    { title: "Germanicus", reason: "Siege über die germanischen Stämme östlich des Rheins (Drusus, Nero Claudius Germanicus)" },
+    { title: "Gothicus", reason: "Vernichtung der gotischen Großflotte in der Schlacht von Naissus 269 n. Chr. (Claudius II. Gothicus)" },
+    { title: "Gurges", reason: "„Der Schlund“, von jugendlicher Verschwendung geläutert zum großen Samnitenbezwinger (Q. Fabius Maximus)" },
+    { title: "Illyricus", reason: "Niederschlagung des pannonisch-illyrischen Riesenaufstandes 6–9 n. Chr. (Tiberius, Germanicus)" },
+    { title: "Invictus", reason: "„Der Unbesiegte“, kaiserlicher Marstitel in Anlehnung an Sol Invictus (Caracalla, Konstantin)" },
+    { title: "Isauricus", reason: "Erstürmung der kilikischen Piratenburgen im rauen Taurusgebirge (P. Servilius Vatia)" },
+    { title: "Macedonicus", reason: "Triumph über Perseus von Makedonien bei Pydna 168 v. Chr. (L. Aemilius Paullus)" },
+    { title: "Magnus", reason: "„Der Große“, vom Diktator Sulla zuerkannt für Siege in Afrika (Cn. Pompeius Magnus)" },
+    { title: "Medicus", reason: "Abwehr der medischen Kontingente im Partherfeldzug (Marcus Aurelius, Lucius Verus)" },
+    { title: "Mesopotamicus", reason: "Vorstoß und Rückeroberung des Zweistromlandes (Kaiser Carus)" },
+    { title: "Numantinus", reason: "Belagerung und Einnahme der unbeugsamen Keltibererstadt Numantia 133 v. Chr. (Scipio Aemilianus)" },
+    { title: "Numidicus", reason: "Zermürbungskrieg gegen den Wüstenkönig Jugurtha von Numidien (Q. Caecilius Metellus)" },
+    { title: "Optimus", reason: "„Der Beste aller Kaiser“, höchste zivile Senatsauszeichnung für vorbildliche Milde (Trajan)" },
+    { title: "Palmyrenicus", reason: "Zerschlagung des Sonderreiches von Palmyra und Gefangennahme der Königin Zenobia (Aurelian)" },
+    { title: "Pannonicus", reason: "Befriedung der kriegerischen Pannonier an der mittleren Donau (Tiberius)" },
+    { title: "Parthicus", reason: "Eroberung der parthischen Hauptstadt Ktesiphon am Tigris (Trajan, Septimius Severus)" },
+    { title: "Pater Patriae", reason: "„Vater des Vaterlandes“ für die Rettung vor Catilina (Cicero) bzw. Beendigung der Bürgerkriege (Augustus)" },
+    { title: "Persicus", reason: "Zerschlagung des königlichen Heeres des Sassanidenreiches (Galerius, Diokletian)" },
+    { title: "Pius", reason: "„Der Pflichtgetreue“, unermüdlicher Einsatz für die Rückberufung des verbannten Vaters (Metellus Pius)" },
+    { title: "Ponticus", reason: "Zerschlagung der Flotte und Festungen des Mithridates am Schwarzen Meer (Lucullus, Pompeius)" },
+    { title: "Publicola", reason: "„Volksfreund“, Verleiher der ersten Bürgerrechte nach Sturz der Könige 509 v. Chr. (P. Valerius Publicola)" },
+    { title: "Regillensis", reason: "Sieg über den Bund der Latiner am mythischen Regillus-See 496 v. Chr. (A. Postumius Albus)" },
+    { title: "Restitutor Galliarum", reason: "Wiederhersteller der gallischen Sicherheit gegen germanische Plünderzüge (Postumus, Aurelian)" },
+    { title: "Restitutor Orbis", reason: "„Wiederhersteller des Erdkreises“, Reintegration Palmyras und Galliens ins Reich (Aurelian)" },
+    { title: "Restitutor Orientis", reason: "Befreier und Wiederhersteller der orientalischen Grenzprovinzen (Aurelian)" },
+    { title: "Sapiens", reason: "„Der Staatsweise“, meisterhafte philosophische Mäßigung und Rechtskenntnis (C. Laelius)" },
+    { title: "Sarmaticus", reason: "Sieg über die sarmatischen Reiterscharen an der Donau (Marcus Aurelius, Caracalla)" },
+    { title: "Scaevola", reason: "„Der Linkshänder“, verbrannte furchtlos die Rechte im Feuer vor König Porsenna (C. Mucius Scaevola)" },
+    { title: "Serranus", reason: "Der direkt von der Aussaat (serere) auf dem Acker zum Konsulat Berufene (C. Atilius Regulus)" },
+    { title: "Torquatus", reason: "Tötung eines keltischen Hünen im Duell und Raub seines goldenen Halsreifs (T. Manlius Torquatus)" },
+    { title: "Tremulus", reason: "Bezwinger des rebellierenden Stammes der Herniker und Einnehmer von Anagnia (Q. Marcius Tremulus)" },
+    { title: "Vandalicus", reason: "Vernichtung des nordafrikanischen Vandalenreiches durch Belisar 534 n. Chr. (Justinian I.)" }
   ].sort((a,b) => a.title.localeCompare(b.title));
 
-  // Die 35 historischen Tribus
+  // TRIBUS
   const TRIBUS_DB = [
-    { abbr: "AEM.", name: "Aemilia", type: "rustica · ländlich", region: "Latium Vetus (Stammland der Aemilier)", stand: "patrician" },
-    { abbr: "ANI.", name: "Aniensis", type: "rustica · ländlich", region: "Tibur / Tal des Flusses Anio", stand: "plebeian" },
+    { abbr: "AEM.", name: "Aemilia", type: "rustica · ländlich", region: "Latium Vetus (Stammbezirk der Aemilier)", stand: "patrician" },
+    { abbr: "ANI.", name: "Aniensis", type: "rustica · ländlich", region: "Tibur und das Flusstal des Anio", stand: "plebeian" },
     { abbr: "ARN.", name: "Arniensis", type: "rustica · ländlich", region: "Etrurien am Fluss Arnus (Arno)", stand: "plebeian" },
-    { abbr: "CLA.", name: "Claudia", type: "rustica · ländlich", region: "Sabinerland am Fluss Anio (Gens Claudia)", stand: "patrician" },
-    { abbr: "CLV.", name: "Clustumina", type: "rustica · ländlich", region: "Umbrien um Clustunum", stand: "plebeian" },
+    { abbr: "CAM.", name: "Camilia", type: "rustica · ländlich", region: "Territorium um Veji und Capena", stand: "plebeian" },
+    { abbr: "CLA.", name: "Claudia", type: "rustica · ländlich", region: "Sabinerland am Anio (Stammland der Claudier)", stand: "patrician" },
+    { abbr: "CLV.", name: "Clustumina", type: "rustica · ländlich", region: "Umbrien um die Stadt Clustunum", stand: "plebeian" },
     { abbr: "COL.", name: "Collina", type: "urbana · städtisch", region: "Rom (Quirinal- und Viminalhügel)", stand: "urbana" },
-    { abbr: "COR.", name: "Cornelia", type: "rustica · ländlich", region: "Agro Romano (Stammbezirk der Cornelier)", stand: "patrician" },
+    { abbr: "COR.", name: "Cornelia", type: "rustica · ländlich", region: "Agro Romano (Territorium der Cornelier)", stand: "patrician" },
     { abbr: "ESQ.", name: "Esquilina", type: "urbana · städtisch", region: "Rom (Esquilin-Hochebene)", stand: "urbana" },
     { abbr: "FAB.", name: "Fabia", type: "rustica · ländlich", region: "Cremera-Ebene (Urzelle der Fabier)", stand: "patrician" },
-    { abbr: "FAL.", name: "Falerna", type: "rustica · ländlich", region: "Kampanien (Falernischer Weinbau)", stand: "plebeian" },
-    { abbr: "GAL.", name: "Galeria", type: "rustica · ländlich", region: "Südliches Etrurien am Galeria-Fluss", stand: "plebeian" },
+    { abbr: "FAL.", name: "Falerna", type: "rustica · ländlich", region: "Nordkampanien (Falernischer Weinbau)", stand: "plebeian" },
+    { abbr: "GAL.", name: "Galeria", type: "rustica · ländlich", region: "Südliches Etrurien am Fluss Galeria", stand: "plebeian" },
     { abbr: "HOR.", name: "Horatia", type: "rustica · ländlich", region: "Albaner Berge (Stammbezirk der Horatier)", stand: "patrician" },
     { abbr: "LEM.", name: "Lemonia", type: "rustica · ländlich", region: "Via Latina vor der Porta Capena", stand: "plebeian" },
-    { abbr: "MAE.", name: "Maecia", type: "rustica · ländlich", region: "Lanuvium / Albaner Land", stand: "plebeian" },
-    { abbr: "MEN.", name: "Menenia", type: "rustica · ländlich", region: "Pedum / Latium (Sitz der Menenier)", stand: "patrician" },
+    { abbr: "MAE.", name: "Maecia", type: "rustica · ländlich", region: "Lanuvium und das südliche Albaner Land", stand: "plebeian" },
+    { abbr: "MEN.", name: "Menenia", type: "rustica · ländlich", region: "Pedum in Latium (Sitz der Menenier)", stand: "patrician" },
     { abbr: "OVF.", name: "Oufentina", type: "rustica · ländlich", region: "Volskerland am Fluss Ufens", stand: "plebeian" },
     { abbr: "PAL.", name: "Palatina", type: "urbana · städtisch", region: "Rom (Palatinischer Ur-Hügel)", stand: "urbana" },
     { abbr: "PAP.", name: "Papiria", type: "rustica · ländlich", region: "Tusculum (Stammland der Papirier)", stand: "patrician" },
-    { abbr: "POB.", name: "Poblilia", type: "rustica · ländlich", region: "Hernikerland um Anagnia", stand: "plebeian" },
-    { abbr: "POL.", name: "Pollia", type: "rustica · ländlich", region: "Ager Gallicus / Picenum", stand: "plebeian" },
-    { abbr: "POM.", name: "Pomptina", type: "rustica · ländlich", region: "Pontinische Ebene", stand: "plebeian" },
-    { abbr: "QVI.", name: "Quirina", type: "rustica · ländlich", region: "Sabina (Reate)", stand: "plebeian" },
+    { abbr: "POB.", name: "Poblilia", type: "rustica · ländlich", region: "Hernikerland um die Felsenstadt Anagnia", stand: "plebeian" },
+    { abbr: "POL.", name: "Pollia", type: "rustica · ländlich", region: "Ager Gallicus und Picenum", stand: "plebeian" },
+    { abbr: "POM.", name: "Pomptina", type: "rustica · ländlich", region: "Pontinische Ebene und Sumpfland", stand: "plebeian" },
+    { abbr: "PVP.", name: "Pupinia", type: "rustica · ländlich", region: "Ager Pupinius nordöstlich von Rom", stand: "plebeian" },
+    { abbr: "QVI.", name: "Quirina", type: "rustica · ländlich", region: "Sabina um Reate (gegründet 241 v. Chr.)", stand: "plebeian" },
     { abbr: "ROM.", name: "Romilia", type: "rustica · ländlich", region: "Rechtes Tiberufer (Gens Romilia)", stand: "patrician" },
     { abbr: "SAB.", name: "Sabatina", type: "rustica · ländlich", region: "Sabater See (Lago di Bracciano)", stand: "plebeian" },
     { abbr: "SCA.", name: "Scaptia", type: "rustica · ländlich", region: "Latium um die Stadt Scaptia", stand: "plebeian" },
-    { abbr: "SER.", name: "Sergia", type: "rustica · ländlich", region: "Sabinerland (Gens Sergia)", stand: "patrician" },
-    { abbr: "STE.", name: "Stellatina", type: "rustica · ländlich", region: "Südliches Etrurien um Capena", stand: "plebeian" },
-    { abbr: "SVB.", name: "Suburana", type: "urbana · städtisch", region: "Rom (Subura / Caelianer Hügel)", stand: "urbana" },
-    { abbr: "TER.", name: "Teretina", type: "rustica · ländlich", region: "Liris-Tal / Samniumgrenze", stand: "plebeian" },
-    { abbr: "TRO.", name: "Tromentina", type: "rustica · ländlich", region: "Etruskisches Territorium von Veji", stand: "plebeian" },
+    { abbr: "SER.", name: "Sergia", type: "rustica · ländlich", region: "Sabinerland (Stammbezirk der Sergier)", stand: "patrician" },
+    { abbr: "STE.", name: "Stellatina", type: "rustica · ländlich", region: "Campania / Etrurien um Capena", stand: "plebeian" },
+    { abbr: "SVB.", name: "Suburana", type: "urbana · städtisch", region: "Rom (Tal der Subura & Caelianer Hügel)", stand: "urbana" },
+    { abbr: "TER.", name: "Teretina", type: "rustica · ländlich", region: "Liris-Tal an der Samniumgrenze", stand: "plebeian" },
+    { abbr: "TRO.", name: "Tromentina", type: "rustica · ländlich", region: "Ehemaliges etruskisches Land von Veji", stand: "plebeian" },
     { abbr: "VEL.", name: "Velina", type: "rustica · ländlich", region: "Picenum um den Velinus-See", stand: "plebeian" },
     { abbr: "VOL.", name: "Voltinia", type: "rustica · ländlich", region: "Samnium und Gallia Narbonensis", stand: "plebeian" },
-    { abbr: "VOT.", name: "Voturia", type: "rustica · ländlich", region: "Ostia / Küstenland (Gens Veturia)", stand: "patrician" }
+    { abbr: "VOT.", name: "Voturia", type: "rustica · ländlich", region: "Küstengebiet um Ostia (Gens Veturia)", stand: "patrician" }
   ].sort((a,b) => a.name.localeCompare(b.name));
 
-  // Historische Vorlagen
+  // HISTORISCHE MUSTERVORLAGEN
   const FAMOUS_PRESETS = {
     caesar: {
       praenomen: "Gaius", nomen: "Iulius", filiation: "C. f.", tribus: "FAB.", cognomen: "Caesar", agnomen: "",
       gender: "M", epoch: "late_rep", social: "patrician",
-      desc: "Gaius Iulius Caii filius Caesar. Diktator auf Lebenszeit, Eroberer Galliens und Zerstörer der alten Republik."
+      desc: "Gaius Iulius Caii filius Caesar. Diktator auf Lebenszeit, Eroberer Galliens und Überwinder der Republik."
     },
     cicero: {
-      praenomen: "Marcus", nomen: "Tullius", filiation: "M. f.", tribus: "COR.", cognomen: "Cicero", agnomen: "",
+      praenomen: "Marcus", nomen: "Tullius", filiation: "M. f.", tribus: "COR.", cognomen: "Cicero", agnomen: "Pater Patriae",
       gender: "M", epoch: "late_rep", social: "equester",
-      desc: "Marcus Tullius Marci filius Cicero. Roms größter Redner; stieg aus dem Ritteradel von Tusculum als Homo Novus zum Konsul auf."
+      desc: "Marcus Tullius Marci filius Cicero. Konsul, Retter des Staates vor Catilina, größter Redner Roms."
     },
     scipio: {
       praenomen: "Publius", nomen: "Cornelius", filiation: "P. f.", tribus: "COR.", cognomen: "Scipio", agnomen: "Africanus",
       gender: "M", epoch: "late_rep", social: "patrician",
-      desc: "Publius Cornelius Publii filius Scipio Africanus. Bezwinger Hannibals in der Entscheidungsschlacht von Zama (202 v. Chr.)."
+      desc: "Publius Cornelius Publii filius Scipio Africanus. Bezwinger Hannibals in der Entscheidungsschlacht von Zama 202 v. Chr."
     },
     augustus: {
       praenomen: "Gaius", nomen: "Iulius", filiation: "C. f. Divi f.", tribus: "FAB.", cognomen: "Caesar", agnomen: "Augustus",
       gender: "M", epoch: "principate", social: "patrician",
-      desc: "Imperator Caesar Divi filius Augustus. Erster Princeps, Schöpfer des Römischen Kaiserreiches und der Pax Augusta."
+      desc: "Imperator Caesar Divi filius Augustus. Erster Princeps, Schöpfer des Römischen Kaiserreiches."
     },
     sulla: {
       praenomen: "Lucius", nomen: "Cornelius", filiation: "L. f.", tribus: "AEM.", cognomen: "Sulla", agnomen: "Felix",
       gender: "M", epoch: "late_rep", social: "patrician",
-      desc: "Lucius Cornelius Lucii filius Sulla Felix. Patrizischer Diktator und Reorganisator des senatorischen Staates."
+      desc: "Lucius Cornelius Lucii filius Sulla Felix. Patrizischer Diktator und Reorganisator der senatorischen Republik."
     },
     cato_maior: {
       praenomen: "Marcus", nomen: "Porcius", filiation: "M. f.", tribus: "POB.", cognomen: "Cato", agnomen: "Censorius",
       gender: "M", epoch: "late_rep", social: "plebeian",
-      desc: "Marcus Porcius Marci filius Cato. Der Zensor, Vorkämpfer altrömischer Sitten und schärfster Gegner Karthagos."
+      desc: "Marcus Porcius Marci filius Cato Censorius. Schärfster Sittenwächter Roms und Gegner Karthagos."
     },
     cornelia: {
       praenomen: "", nomen: "Cornelia", filiation: "P. f.", tribus: "", cognomen: "", agnomen: "Africana",
       gender: "F", epoch: "late_rep", social: "patrician",
-      desc: "Cornelia Publii filia Africana. Tochter des älteren Scipio, gebildete Matrona und Mutter der Gracchen-Tribunen."
+      desc: "Cornelia Publii filia Africana. Tochter Scipio Africanus', gebildete Matrona und Mutter der Gracchen."
     },
     livia: {
       praenomen: "", nomen: "Livia", filiation: "M. f.", tribus: "", cognomen: "Drusilla", agnomen: "Augusta",
       gender: "F", epoch: "principate", social: "patrician",
-      desc: "Livia Drusilla Augusta. Gemahlin des Augustus und einflussreichste Herrscherin der Julisch-Claudischen Dynastie."
+      desc: "Livia Drusilla Augusta. Gemahlin des Augustus und einflussreichste Kaiserin der Julisch-Claudischen Dynastie."
     },
     tiro: {
       praenomen: "Marcus", nomen: "Tullius", filiation: "M. l.", tribus: "PAL.", cognomen: "Tiro", agnomen: "",
       gender: "M", epoch: "late_rep", social: "libertus",
-      desc: "Marcus Tullius Marci libertus Tiro. Gelehrter Freigelassener Ciceros und Erfinder der antiken Stenografie."
+      desc: "Marcus Tullius Marci libertus Tiro. Gelehrter Freigelassener Ciceros und Erfinder der Tironischen Noten (Stenografie)."
     }
   };
 
   const zufall = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  // Zähler im Modal befüllen
+  document.getElementById('zaehlerGentes').textContent = GENTES_DB.length;
+  document.getElementById('zaehlerCognomina').textContent = COGNOMINA_DB.length + LIBERTI_COGNOMINA_DB.length;
+  document.getElementById('zaehlerAgnomina').textContent = AGNOMINA_DB.length;
+  document.getElementById('zaehlerPraenomina').textContent = PRAENOMINA_DB.length;
+  document.getElementById('zaehlerTribus').textContent = TRIBUS_DB.length;
 
   // Datalist befüllen
   const listeDerGentes = document.getElementById('listeDerGentes');
@@ -1518,18 +1361,20 @@
   });
 
   // =========================================================================
-  // 2. KERNLOGIK: SYNTHESE EINES BÜRGERS
+  // 2. KERNLOGIK: HISTORISCHE SYNTHESE
   // =========================================================================
 
   let archivAktuell = [];
 
+  // ECHTE STEIN-EPIGRAPHIK
   function nachMonumental(str) {
     if (!str) return "";
     return str
       .toUpperCase()
       .replace(/U/g, 'V')
       .replace(/J/g, 'I')
-      .replace(/\s+/g, '·')
+      .replace(/\./g, '')           // Moderne Satzpunkte entfernen
+      .replace(/\s+/g, '·')          // Interpunkt als Trenner
       .replace(/·+/g, '·')
       .replace(/^·|·$/g, '');
   }
@@ -1562,7 +1407,6 @@
         const ritterGentes = GENTES_DB.filter(g => g.status.includes('Equester'));
         gensObj = ritterGentes.length ? zufall(ritterGentes) : zufall(GENTES_DB);
       } else if (stand === 'provincialis') {
-        // Provinzialen übernahmen oft Kaisernamen (Iulius, Claudius, Flavius, Aurelius)
         const provGentes = GENTES_DB.filter(g => ["Iulius", "Claudius", "Flavius", "Aurelius", "Ulpius"].includes(g.nomen));
         gensObj = provGentes.length ? zufall(provGentes) : zufall(GENTES_DB);
       } else {
@@ -1571,7 +1415,7 @@
       }
     }
 
-    // Nomen anpassen (Feminin)
+    // Nomen Gentiles feminisieren
     let nomenText = (geschlecht === 'M') ? gensObj.nomen : gensObj.nomen.replace(/us$/, 'a').replace(/ius$/, 'ia');
 
     // 2. Praenomen & Filiation
@@ -1587,7 +1431,7 @@
         praenomenText = "Flavius";
         praenomenKuerzel = "Fl.";
         filiationText = "";
-        filiationBedeutung = "In der Spätantike erlosch die Filiation; 'Flavius' galt als erhabenes Amtspräfix";
+        filiationBedeutung = "In der Spätantike erlosch die Filiation; 'Flavius' galt als erhabenes senatorisches Amtspräfix";
       } else {
         praenomenText = praenomenObj.name;
         praenomenKuerzel = praenomenObj.abbr;
@@ -1637,35 +1481,42 @@
     } else {
       cognomenObj = zufall(COGNOMINA_DB);
       if (geschlecht === 'F') {
-        cognomenText = (Math.random() > 0.5) ? cognomenObj.fem : zufall(["Maior", "Minor", "Tertia", "Drusilla"]);
+        // Römische Matronen: Echte feminine Cognomina oder Geburtsrang
+        cognomenText = (Math.random() > 0.45) ? cognomenObj.fem : zufall(["Maior", "Minor", "Tertia", "Quarta", "Paulla"]);
       } else {
         cognomenText = cognomenObj.name;
       }
     }
 
     if (epoche === 'early_rep') {
-      if (stand !== 'patrician' || Math.random() > 0.4) {
+      if (stand !== 'patrician' || Math.random() > 0.35) {
         cognomenText = "";
       }
     }
 
-    // 5. Agnomen (Regel: Niemals bei Frauen)
+    // 5. Agnomen
     let agnomenObj = null;
     let agnomenText = "";
 
     if (geschlecht === 'M') {
       if (agnomenModus === 'immer') {
-        agnomenObj = zufall(AGNOMINA_DB);
+        const maennlicheAgnomina = AGNOMINA_DB.filter(a => a.title !== "Augusta");
+        agnomenObj = zufall(maennlicheAgnomina);
         agnomenText = agnomenObj.title;
       } else if (agnomenModus === 'zufall') {
-        // Bei Zufall: ca. 30% Wahrscheinlichkeit bei Patriziern und Rittern, sonst 10%
-        const schwelle = (stand === 'patrician' || stand === 'equester') ? 0.70 : 0.90;
+        const schwelle = (stand === 'patrician' || stand === 'equester') ? 0.75 : 0.92;
         if (Math.random() > schwelle && epoche !== 'early_rep') {
-          agnomenObj = zufall(AGNOMINA_DB);
+          const maennlicheAgnomina = AGNOMINA_DB.filter(a => a.title !== "Augusta");
+          agnomenObj = zufall(maennlicheAgnomina);
           agnomenText = agnomenObj.title;
         }
       }
-      // 'nie' -> agnomenText bleibt leer
+    } else {
+      // Frauen erhielten nur in der Kaiserzeit kaiserliche Agnomina (wie Augusta)
+      if (epoche === 'principate' && (agnomenModus === 'immer' || Math.random() > 0.85) && stand === 'patrician') {
+        agnomenObj = AGNOMINA_DB.find(a => a.title === "Augusta");
+        agnomenText = agnomenObj ? agnomenObj.title : "";
+      }
     }
 
     return {
@@ -1694,7 +1545,7 @@
   }
 
   // =========================================================================
-  // 3. ANZEIGE- UND RENDERING-LOGIK (MIT LIVE-UMSCHALTUNG)
+  // 3. ANZEIGE- UND RENDERING-LOGIK
   // =========================================================================
 
   const ausgabeFlaeche = document.getElementById('ausgabeFlaeche');
@@ -1718,6 +1569,15 @@
     }
   }
 
+  function baueInschriftZeichenkette(c, modus) {
+    if (modus === 'monumental') {
+      const elemente = [c.praenomenKuerzel || c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
+      return nachMonumental(elemente);
+    } else {
+      return [c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
+    }
+  }
+
   function rendereAusgabe() {
     if (!archivAktuell.length) {
       ausgabeFlaeche.innerHTML = `<div style="text-align:center; padding:4rem; color:var(--text-gedaempft); font-style:italic;">Keine Bürger im Zensus verzeichnet. Wähle die Parameter und befehle die Beurkundung.</div>`;
@@ -1728,13 +1588,12 @@
     const schriftModus = document.getElementById('cfgSchrift').value;
     statusZensus.textContent = `Zensus: ${archivAktuell.length} ${archivAktuell.length === 1 ? 'Bürgerdossier' : 'Eintragungen in der Rolle'}`;
 
-    // A: EINZEL-DOSSIER
+    // A: EINZEL-DOSSIER (MONUMENT)
     if (archivAktuell.length === 1) {
       const c = archivAktuell[0];
 
       const teileKlassisch = [c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
-      const teileMonumental = [c.praenomenKuerzel || c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
-      const inschriftAnzeige = (schriftModus === 'monumental') ? nachMonumental(teileMonumental) : teileKlassisch;
+      const inschriftAnzeige = baueInschriftZeichenkette(c, schriftModus);
 
       const sk = standKlasse(c.gensStatus);
       const istRustica = c.tribusObj && c.tribusObj.type.includes('rustica');
@@ -1744,17 +1603,16 @@
       ausgabeFlaeche.innerHTML = `
         <div class="titulus-monument">
           <div class="titulus-kopf">
-            <div class="titulus-inschrift">${inschriftAnzeige}</div>
-            <div class="titulus-phonetik">Klassisches Buchlatein: ${teileKlassisch}</div>
+            <div class="titulus-inschrift" id="monumentInschriftText">${inschriftAnzeige}</div>
+            <div class="titulus-phonetik">Klassische Leseform: ${teileKlassisch}</div>
             <div class="abzeichen-leiste">
-              <span class="status-abzeichen ${sk.abzeichen}">Status: ${c.gensStatus}</span>
-              <span class="status-abzeichen ${tribusAbzeichenKlasse}">${c.tribus ? `Tribus ${c.tribusObj.name} (${c.tribusObj.type})` : 'Tribus: Exemt'}</span>
-              <span class="status-abzeichen abzeichen-epoche">Aetas: ${formatiereEpoche(c.epoche)}</span>
+              <span class="status-abzeichen ${sk.abzeichen}">Ordo: ${c.gensStatus}</span>
+              <span class="status-abzeichen ${tribusAbzeichenKlasse}">${c.tribus ? `Tribus ${c.tribusObj.name} (${c.tribusObj.type})` : 'Tribus: Exemt / Sine Tribu'}</span>
+              <span class="status-abzeichen abzeichen-epoche">${formatiereEpoche(c.epoche)}</span>
               <span class="status-abzeichen abzeichen-epoche">${c.geschlecht === 'M' ? '♂ Vir Civis' : '♀ Femina Matrona'}</span>
             </div>
           </div>
 
-          <!-- STANDARDIISIERTE 3-STUFIGE KASTEN (LATEIN / DEUTSCH) -->
           <div class="anatomie-kasten-gitter">
             
             <!-- Kasten 1: Praenomen -->
@@ -1763,8 +1621,8 @@
               <div class="kasten-stufe-wert">${c.praenomen || '—'}</div>
               <div class="kasten-stufe-erklaerung">
                 ${c.praenomen 
-                  ? `<strong>Bedeutung:</strong> ${c.praenomenBedeutung}. Epigraphisches Siegel: <strong>${c.praenomenKuerzel}</strong>.`
-                  : `<strong>Historischer Status:</strong> Römische Bürgerinnen führten in der Republik kein Praenomen, sondern den Sippennamen.`
+                  ? `<strong>Bedeutung:</strong> ${c.praenomenBedeutung}. Siegel: <strong>${c.praenomenKuerzel}</strong>.`
+                  : `<strong>Historische Praxis:</strong> Römische Bürgerinnen führten in der Republik kein individuelles Praenomen, sondern den Sippennamen.`
                 }
               </div>
             </div>
@@ -1775,7 +1633,7 @@
               <div class="kasten-stufe-wert">${c.nomen}</div>
               <div class="kasten-stufe-erklaerung">
                 <strong>Gens ${c.gensMasc}:</strong> ${c.gensHerkunft} 
-                <br><em>Zweige (Stirpes):</em> ${c.gensStirpes}. Bezeugt: ${c.gensEpoche}.
+                <br><em>Hauptzweige (Stirpes):</em> ${c.gensStirpes}. Epoche: ${c.gensEpoche}.
               </div>
             </div>
 
@@ -1784,18 +1642,18 @@
               <div class="kasten-stufe-kategorie">Filiatio · Abstammung</div>
               <div class="kasten-stufe-wert">${c.filiation || '—'}</div>
               <div class="kasten-stufe-erklaerung">
-                <strong>Rechtsformel:</strong> ${c.filiationBedeutung || 'Keine Abstammung deklariert'}.
+                <strong>Rechtsnachweis:</strong> ${c.filiationBedeutung || 'Keine Abstammung deklariert'}.
               </div>
             </div>
 
             <!-- Kasten 4: Tribus -->
             <div class="anatomie-kasten ${tribusKastenKlasse}">
-              <div class="kasten-stufe-kategorie">Tribus · Bürger-Stimmbezirk</div>
+              <div class="kasten-stufe-kategorie">Tribus · Stimmbezirk</div>
               <div class="kasten-stufe-wert">${c.tribus ? `${c.tribusObj.abbr} (${c.tribusObj.name})` : '—'}</div>
               <div class="kasten-stufe-erklaerung">
                 ${c.tribus 
-                  ? `<strong>Bezirk (${c.tribusObj.type}):</strong> ${c.tribusObj.region}. Grundlegend für das Stimmrecht in den Comitia Tributa.`
-                  : `Frauen und Nicht-Stimmberechtigte führten keine formelle Tribus-Eintragung.`
+                  ? `<strong>Bezirk (${c.tribusObj.type}):</strong> ${c.tribusObj.region}. Stimmberechtigt in den <em>Comitia Tributa</em>.`
+                  : `Frauen und bestimmte Stände besaßen keine eigene Tribus-Stimmberechtigung.`
                 }
               </div>
             </div>
@@ -1805,7 +1663,7 @@
               <div class="kasten-stufe-kategorie">Cognomen · Sippenzweig</div>
               <div class="kasten-stufe-wert">${c.cognomen || '—'}</div>
               <div class="kasten-stufe-erklaerung">
-                <strong>Charakterisierung:</strong> ${c.cognomenBedeutung}. 
+                <strong>Bedeutung:</strong> ${c.cognomenBedeutung}. 
                 <br><em>Kontext:</em> ${c.cognomenHerkunft}.
               </div>
             </div>
@@ -1816,7 +1674,7 @@
               <div class="kasten-stufe-kategorie" style="color: var(--farbe-gold-hell);">Agnomen · Ehrenbeiname</div>
               <div class="kasten-stufe-wert" style="color: var(--farbe-gold-hell);">${c.agnomen}</div>
               <div class="kasten-stufe-erklaerung">
-                <strong>Senats-Dekret:</strong> ${c.agnomenGrund}.
+                <strong>Senatsdekret:</strong> ${c.agnomenGrund}.
               </div>
             </div>` : ''}
 
@@ -1826,14 +1684,13 @@
       return;
     }
 
-    // B: MEHRFACH-ROLLE (BIS ZU 100 NAMEN)
+    // B: MEHRFACH-ROLLE
     const rolle = document.createElement('div');
     rolle.className = 'zensus-rolle';
 
     archivAktuell.forEach((c) => {
       const teileCls = [c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
-      const teileMon = [c.praenomenKuerzel || c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
-      const titelText = (schriftModus === 'monumental') ? nachMonumental(teileMon) : teileCls;
+      const titelText = baueInschriftZeichenkette(c, schriftModus);
 
       const sk = standKlasse(c.gensStatus);
       const istRust = c.tribusObj && c.tribusObj.type.includes('rustica');
@@ -1844,7 +1701,7 @@
         <div class="rolle-kopf">
           <div>
             <div class="rolle-name-gross">${titelText}</div>
-            <div class="rolle-name-sub">Klassisch: ${teileCls}</div>
+            <div class="rolle-name-sub">Leseform: ${teileCls}</div>
           </div>
           <div class="abzeichen-leiste" style="margin:0;">
             <span class="status-abzeichen ${sk.abzeichen}">${c.gensStatus}</span>
@@ -1857,11 +1714,11 @@
             ${c.nomen} (${c.gensHerkunft})
           </div>
           <div class="rolle-detail-element">
-            <span>Filiatio · Abstammung</span>
+            <span>Filiatio · Status</span>
             ${c.filiation || '—'} · ${c.filiationBedeutung}
           </div>
           <div class="rolle-detail-element">
-            <span>Cognomen · Bedeutung</span>
+            <span>Cognomen · Zweig</span>
             ${c.cognomen || '—'} (${c.cognomenBedeutung})
           </div>
           ${c.agnomen ? `
@@ -1887,10 +1744,10 @@
 
     if (musterSchluessel && FAMOUS_PRESETS[musterSchluessel]) {
       const p = FAMOUS_PRESETS[musterSchluessel];
-      const gObj = GENTES_DB.find(g => g.nomen === p.nomen) || { status: p.social === 'patrician' ? 'Patricius · Patrizier' : 'Plebeius · Plebejer', time: "bezeugt", stirpes: p.cognomen, origin: "Bedeutende Gens Roms" };
+      const gObj = GENTES_DB.find(g => g.nomen === p.nomen) || { status: p.social === 'patrician' ? 'Patricius · Patrizier' : 'Plebeius · Plebejer', time: "bezeugt", stirpes: p.cognomen, origin: "Historische Nobilität" };
       const tObj = TRIBUS_DB.find(t => t.abbr === p.tribus) || { abbr: p.tribus, name: p.tribus, type: "rustica · ländlich", region: "Latium" };
       const cObj = COGNOMINA_DB.find(c => c.name === p.cognomen) || { meaning: "Historischer Beiname", origin: "Historische Überlieferung" };
-      const aObj = AGNOMINA_DB.find(a => a.title === p.agnomen) || { reason: "Historischer Siegestitel" };
+      const aObj = AGNOMINA_DB.find(a => a.title === p.agnomen) || { reason: "Senatsehrentitel" };
 
       const musterBuerger = {
         praenomen: p.praenomen,
@@ -1903,7 +1760,7 @@
         gensHerkunft: p.desc,
         gensStirpes: gObj.stirpes,
         filiation: p.filiation,
-        filiationBedeutung: "In antiken Fasti belegte Vaterschaft",
+        filiationBedeutung: "In antiken Fasti belegte Filiation",
         tribus: p.tribus,
         tribusObj: tObj,
         cognomen: p.cognomen,
@@ -1942,7 +1799,7 @@
     rendereAusgabe();
   }
 
-  // LIVE-UMWANDLUNG DER SCHRIFT BEIM ÄNDERN DES SCHALTERS
+  // Live-Schriftwechsel
   document.getElementById('cfgSchrift').addEventListener('change', () => {
     if (archivAktuell.length > 0) {
       rendereAusgabe();
@@ -1984,8 +1841,24 @@
   });
 
   // =========================================================================
-  // 5. EXPORT (JSON & CSV)
+  // 5. EXPORT & KOPIEREN
   // =========================================================================
+
+  const kopierToast = document.getElementById('kopierToast');
+  function zeigeToast(text) {
+    kopierToast.textContent = text;
+    kopierToast.classList.add('aktiv');
+    setTimeout(() => kopierToast.classList.remove('aktiv'), 2600);
+  }
+
+  document.getElementById('btnKopierenInschrift').addEventListener('click', () => {
+    if (!archivAktuell.length) return;
+    const schriftModus = document.getElementById('cfgSchrift').value;
+    const text = archivAktuell.map(c => baueInschriftZeichenkette(c, schriftModus)).join('\n');
+    navigator.clipboard.writeText(text).then(() => {
+      zeigeToast("Inscriptio in Tabulam Descripta Est! (Kopiert)");
+    });
+  });
 
   document.getElementById('btnExportJSON').addEventListener('click', () => {
     if (!archivAktuell.length) return;
@@ -2001,7 +1874,7 @@
     let csv = "Praenomen;Nomen_Gentile;Filiatio;Tribus;Cognomen;Agnomen;Status_Civitatis;Aetas_Historica;Nomen_Latinum;Titulus_Monumentalis\n";
     archivAktuell.forEach(c => {
       const cls = [c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' ');
-      const mon = nachMonumental([c.praenomenKuerzel || c.praenomen, c.nomen, c.filiation, c.tribus, c.cognomen, c.agnomen].filter(Boolean).join(' '));
+      const mon = baueInschriftZeichenkette(c, 'monumental');
       csv += `"${c.praenomen}";"${c.nomen}";"${c.filiation}";"${c.tribus}";"${c.cognomen}";"${c.agnomen}";"${c.gensStatus}";"${c.epoche}";"${cls}";"${mon}"\n`;
     });
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -2012,7 +1885,7 @@
   });
 
   // =========================================================================
-  // 6. LEXICON ONOMASTICUM (MODAL & KATALOG)
+  // 6. LEXICON ONOMASTICUM (MODAL & SUCHE)
   // =========================================================================
 
   const modal = document.getElementById('lexikonModal');
@@ -2021,6 +1894,7 @@
   const lexikonTabellenAnzeige = document.getElementById('lexikonTabellenAnzeige');
   const lexikonSuchFeld = document.getElementById('lexikonSuchFeld');
   const reiterTasten = document.querySelectorAll('.modal-reiter');
+  const trefferZaehler = document.getElementById('trefferZaehler');
 
   let aktiverKatalog = 'gentes';
 
@@ -2053,6 +1927,7 @@
   function rendereKatalogTabelle() {
     const begriff = lexikonSuchFeld.value.toLowerCase().trim();
     let tabelleHtml = '';
+    let anzahlTreffer = 0;
 
     if (aktiverKatalog === 'gentes') {
       const gefiltert = GENTES_DB.filter(g => 
@@ -2061,16 +1936,17 @@
         g.origin.toLowerCase().includes(begriff) ||
         g.stirpes.toLowerCase().includes(begriff)
       );
+      anzahlTreffer = gefiltert.length;
 
       tabelleHtml = `
         <table class="lexikon-tabelle">
           <thead>
             <tr>
-              <th style="width:20%;">Gens (Nomen)</th>
+              <th style="width:20%;">Gens (Nomen Gentile)</th>
               <th style="width:20%;">Status Civitatis · Stand</th>
               <th style="width:15%;">Epoche</th>
               <th style="width:20%;">Stirpes · Hauptzweige</th>
-              <th style="width:25%;">Historische Bedeutung</th>
+              <th style="width:25%;">Historische Bedeutung & Ursprung</th>
             </tr>
           </thead>
           <tbody>
@@ -2089,20 +1965,23 @@
         </table>
       `;
     } else if (aktiverKatalog === 'cognomina') {
-      const gefiltert = COGNOMINA_DB.filter(c => 
+      const alleCognomina = [...COGNOMINA_DB, ...LIBERTI_COGNOMINA_DB];
+      const gefiltert = alleCognomina.filter(c => 
         c.name.toLowerCase().includes(begriff) || 
+        c.fem.toLowerCase().includes(begriff) || 
         c.meaning.toLowerCase().includes(begriff) || 
-        c.origin.toLowerCase().includes(begriff)
+        (c.origin && c.origin.toLowerCase().includes(begriff))
       );
+      anzahlTreffer = gefiltert.length;
 
       tabelleHtml = `
         <table class="lexikon-tabelle">
           <thead>
             <tr>
-              <th style="width:20%;">Cognomen</th>
-              <th style="width:15%;">Femininum</th>
-              <th style="width:35%;">Wörtliche Bedeutung & Übersetzung</th>
-              <th style="width:30%;">Historischer Träger / Kontext</th>
+              <th style="width:20%;">Cognomen (Vir)</th>
+              <th style="width:20%;">Femininum (Matrona)</th>
+              <th style="width:35%;">Bedeutung & Etymologie</th>
+              <th style="width:25%;">Historischer Träger / Zweig</th>
             </tr>
           </thead>
           <tbody>
@@ -2111,7 +1990,7 @@
                 <td style="font-family:'Cinzel',serif; font-weight:700; color:#fff;">${c.name}</td>
                 <td style="font-family:'Cinzel',serif; color:var(--farbe-gold-hell);">${c.fem}</td>
                 <td>${c.meaning}</td>
-                <td>${c.origin}</td>
+                <td>${c.origin || 'Libertus-Name'}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -2122,13 +2001,14 @@
         a.title.toLowerCase().includes(begriff) || 
         a.reason.toLowerCase().includes(begriff)
       );
+      anzahlTreffer = gefiltert.length;
 
       tabelleHtml = `
         <table class="lexikon-tabelle">
           <thead>
             <tr>
               <th style="width:25%;">Agnomen · Ehrentitel</th>
-              <th style="width:75%;">Anlass & Historischer Grund der Senatsverleihung</th>
+              <th style="width:75%;">Historischer Verleihungsgrund des Senats</th>
             </tr>
           </thead>
           <tbody>
@@ -2147,6 +2027,7 @@
         p.abbr.toLowerCase().includes(begriff) || 
         p.meaning.toLowerCase().includes(begriff)
       );
+      anzahlTreffer = gefiltert.length;
 
       tabelleHtml = `
         <table class="lexikon-tabelle">
@@ -2154,8 +2035,8 @@
             <tr>
               <th style="width:20%;">Praenomen</th>
               <th style="width:15%;">Epigraphisches Siegel</th>
-              <th style="width:20%;">Femininum</th>
-              <th style="width:45%;">Etymologie & Bedeutung</th>
+              <th style="width:20%;">Femininum (Archaisch)</th>
+              <th style="width:45%;">Etymologische Bedeutung</th>
             </tr>
           </thead>
           <tbody>
@@ -2176,6 +2057,7 @@
         t.abbr.toLowerCase().includes(begriff) || 
         t.region.toLowerCase().includes(begriff)
       );
+      anzahlTreffer = gefiltert.length;
 
       tabelleHtml = `
         <table class="lexikon-tabelle">
@@ -2184,7 +2066,7 @@
               <th style="width:15%;">Kürzel</th>
               <th style="width:25%;">Tribus (Stimmbezirk)</th>
               <th style="width:25%;">Typus</th>
-              <th style="width:35%;">Geografische Lage & Territorium</th>
+              <th style="width:35%;">Geografische Verortung</th>
             </tr>
           </thead>
           <tbody>
@@ -2203,10 +2085,11 @@
       `;
     }
 
+    trefferZaehler.textContent = `Treffer: ${anzahlTreffer}`;
     lexikonTabellenAnzeige.innerHTML = tabelleHtml;
   }
 
-  // Initialer Start mit C. Iulius Caesar
+  // Initialer Start mit Gaius Iulius Caesar
   document.getElementById('cfgMusterPerson').value = "caesar";
   fuehreGenerierungAus();
 
